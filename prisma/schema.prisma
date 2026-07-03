@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Category {
+  BEER
+  ENERGY
+  OTHER
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+}
+
+enum OrderStatus {
+  NEW
+  CONFIRMED
+  DELIVERING
+  DELIVERED
+  CANCELLED
+}
+
+model Product {
+  id            String      @id @default(cuid())
+  name          String
+  category      Category
+  volumeMl      Int?
+  purchasePrice Decimal     @db.Decimal(10, 2)
+  sellPrice     Decimal     @db.Decimal(10, 2)
+  imageUrl      String?
+  inStock       Boolean     @default(true)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  orderItems    OrderItem[]
+}
+
+model Order {
+  id            String        @id @default(cuid())
+  customerName  String
+  phone         String
+  address       String
+  comment       String?
+  paymentMethod PaymentMethod @default(CASH)
+  status        OrderStatus   @default(NEW)
+  ageConfirmed  Boolean       @default(false)
+  totalAmount   Decimal       @db.Decimal(10, 2)
+  totalCost     Decimal       @db.Decimal(10, 2)
+  totalProfit   Decimal       @db.Decimal(10, 2)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id                String  @id @default(cuid())
+  orderId           String
+  order             Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId         String
+  product           Product @relation(fields: [productId], references: [id])
+  productName       String
+  quantity          Int
+  unitPurchasePrice Decimal @db.Decimal(10, 2)
+  unitSellPrice     Decimal @db.Decimal(10, 2)
+}

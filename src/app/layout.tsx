@@ -1,0 +1,51 @@
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import CartBar from "@/components/CartBar";
+import Header from "@/components/Header";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Йошкар Маркет — пиво и энергетики с доставкой",
+  description: "Доставка пива, энергетиков и напитков по Йошкар-Оле",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Йошкар Маркет",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#ff7a1a",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="ru"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <Header />
+        {children}
+        <CartBar />
+      </body>
+    </html>
+  );
+}
