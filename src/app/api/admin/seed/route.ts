@@ -21,6 +21,9 @@ export async function POST() {
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
       sellPrice: p.purchasePrice + getMarkup(p.category),
+      // imageUrl обновляется, только если задан в seedProducts — иначе не трогаем
+      // то, что уже вручную выставлено в базе через админку.
+      ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}),
     };
     await prisma.product.upsert({
       where: { name: p.name },
