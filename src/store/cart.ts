@@ -49,6 +49,16 @@ export const useCartStore = create<CartState>()(
     {
       name: "yoshkar-shop-cart",
       storage: createJSONStorage(() => localStorage),
+      version: 2,
+      migrate: (persistedState) => {
+        const state = persistedState as CartState;
+        return {
+          ...state,
+          items: (state?.items ?? []).filter(
+            (i) => typeof i.caseSize === "number" && i.caseSize > 0,
+          ),
+        };
+      },
     },
   ),
 );
