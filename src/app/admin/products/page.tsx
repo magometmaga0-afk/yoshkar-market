@@ -31,6 +31,7 @@ export default async function AdminProductsPage() {
               <th className="px-3 py-2">Название</th>
               <th className="px-3 py-2">Категория</th>
               <th className="px-3 py-2">Объём</th>
+              <th className="px-3 py-2">Упаковка</th>
               <th className="px-3 py-2">Закупка</th>
               <th className="px-3 py-2">Продажа</th>
               <th className="px-3 py-2">Фото</th>
@@ -47,6 +48,7 @@ export default async function AdminProductsPage() {
                   name: p.name,
                   category: p.category,
                   volumeMl: p.volumeMl,
+                  caseSize: p.caseSize,
                   purchasePrice: Number(p.purchasePrice),
                   sellPrice: Number(p.sellPrice),
                   imageUrl: p.imageUrl,

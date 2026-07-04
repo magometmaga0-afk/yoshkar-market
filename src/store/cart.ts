@@ -7,6 +7,7 @@ export type CartItem = {
   sellPrice: number;
   volumeMl: number | null;
   category: "BEER" | "ENERGY" | "OTHER";
+  caseSize: number;
   quantity: number;
 };
 

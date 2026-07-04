@@ -34,6 +34,7 @@ model Product {
   name          String
   category      Category
   volumeMl      Int?
+  caseSize      Int         @default(1)
   purchasePrice Decimal     @db.Decimal(10, 2)
   sellPrice     Decimal     @db.Decimal(10, 2)
   imageUrl      String?
@@ -52,6 +53,7 @@ model Order {
   paymentMethod PaymentMethod @default(CASH)
   status        OrderStatus   @default(NEW)
   ageConfirmed  Boolean       @default(false)
+  isPickup      Boolean       @default(false)
   totalAmount   Decimal       @db.Decimal(10, 2)
   totalCost     Decimal       @db.Decimal(10, 2)
   totalProfit   Decimal       @db.Decimal(10, 2)

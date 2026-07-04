@@ -17,6 +17,9 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
   const setQuantity = useCartStore((s) => s.setQuantity);
   const tile = CATEGORY_TILE[product.category];
 
+  const packages = quantity / product.caseSize;
+  const packagePrice = product.sellPrice * product.caseSize;
+
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-md">
       <div className={`relative aspect-square w-full bg-gradient-to-br ${tile.gradient}`}>
@@ -37,6 +40,9 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
             {product.volumeMl} мл
           </span>
         )}
+        <span className="absolute right-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+          уп. {product.caseSize} шт
+        </span>
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-3">
@@ -44,40 +50,49 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
           {product.name}
         </h3>
 
-        <div className="mt-auto flex items-center justify-between gap-2">
-          <span className="text-lg font-bold">{product.sellPrice} ₽</span>
+        <div className="mt-auto space-y-2">
+          <div className="flex items-baseline justify-between">
+            <span className="text-lg font-bold">{packagePrice} ₽</span>
+            <span className="text-xs text-foreground/50">{product.sellPrice} ₽/шт</span>
+          </div>
 
-          <div className="flex shrink-0 items-center gap-1 rounded-full bg-brand px-1 py-1 text-white shadow-sm">
-            <button
-              onClick={() => quantity > 0 && setQuantity(product.id, quantity - 1)}
-              disabled={quantity === 0}
-              aria-label="Убавить"
-              className="flex h-8 w-8 items-center justify-center rounded-full text-base leading-none disabled:opacity-40 active:scale-90"
-            >
-              −
-            </button>
-            <span key={quantity} className="w-4 animate-bounce-once text-center text-sm font-semibold">
-              {quantity}
-            </span>
-            <button
-              onClick={() => {
-                if (quantity === 0) {
-                  addItem({
-                    productId: product.id,
-                    name: product.name,
-                    sellPrice: product.sellPrice,
-                    volumeMl: product.volumeMl,
-                    category: product.category,
-                  });
-                } else {
-                  setQuantity(product.id, quantity + 1);
-                }
-              }}
-              aria-label="Добавить"
-              className="flex h-8 w-8 items-center justify-center rounded-full text-base leading-none active:scale-90"
-            >
-              +
-            </button>
+          <div className="flex items-center justify-end">
+            <div className="flex shrink-0 items-center gap-1 rounded-full bg-brand px-1 py-1 text-white shadow-sm">
+              <button
+                onClick={() => quantity > 0 && setQuantity(product.id, quantity - product.caseSize)}
+                disabled={quantity === 0}
+                aria-label="Убавить упаковку"
+                className="flex h-8 w-8 items-center justify-center rounded-full text-base leading-none disabled:opacity-40 active:scale-90"
+              >
+                −
+              </button>
+              <span key={packages} className="w-4 animate-bounce-once text-center text-sm font-semibold">
+                {packages}
+              </span>
+              <button
+                onClick={() => {
+                  if (quantity === 0) {
+                    addItem(
+                      {
+                        productId: product.id,
+                        name: product.name,
+                        sellPrice: product.sellPrice,
+                        volumeMl: product.volumeMl,
+                        category: product.category,
+                        caseSize: product.caseSize,
+                      },
+                      product.caseSize,
+                    );
+                  } else {
+                    setQuantity(product.id, quantity + product.caseSize);
+                  }
+                }}
+                aria-label="Добавить упаковку"
+                className="flex h-8 w-8 items-center justify-center rounded-full text-base leading-none active:scale-90"
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
       </div>

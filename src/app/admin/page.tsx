@@ -75,6 +75,11 @@ export default async function AdminOrdersPage() {
               <div>
                 <p className="font-medium">
                   {order.customerName} · {order.phone}
+                  {order.isPickup && (
+                    <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+                      Самовывоз
+                    </span>
+                  )}
                 </p>
                 <p className="text-sm text-black/50 dark:text-white/50">{order.address}</p>
               </div>

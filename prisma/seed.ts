@@ -17,6 +17,7 @@ async function main() {
         name: p.name,
         category: p.category,
         volumeMl: p.volumeMl,
+        caseSize: p.caseSize,
         purchasePrice: p.purchasePrice,
         sellPrice: p.purchasePrice + MARKUP,
       },

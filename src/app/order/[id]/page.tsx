@@ -19,7 +19,7 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
         </div>
         <h1 className="text-xl font-bold">Заказ принят!</h1>
         <p className="mt-1 text-sm text-foreground/50">
-          Курьер свяжется по телефону {order.phone} для подтверждения
+          {order.isPickup ? "Мы" : "Курьер"} свяжется по телефону {order.phone} для подтверждения
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
 
       <div className="mt-4 space-y-1 rounded-2xl border border-border bg-card p-4 text-sm text-foreground/60">
         <p>Номер заказа: {order.id.slice(0, 10)}…</p>
-        <p>Адрес: {order.address}</p>
+        <p>{order.isPickup ? "" : "Адрес: "}{order.address}</p>
         <p>Оплата: {order.paymentMethod === "CASH" ? "наличными курьеру" : "картой курьеру"}</p>
       </div>
 

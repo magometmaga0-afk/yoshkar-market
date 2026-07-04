@@ -51,10 +51,11 @@ export async function updateProductPrices(
   purchasePrice: number,
   sellPrice: number,
   imageUrl: string,
+  caseSize: number,
 ) {
   await prisma.product.update({
     where: { id: productId },
-    data: { purchasePrice, sellPrice, imageUrl: imageUrl.trim() || null },
+    data: { purchasePrice, sellPrice, imageUrl: imageUrl.trim() || null, caseSize },
   });
   revalidatePath("/admin/products");
   revalidatePath("/");
@@ -69,9 +70,11 @@ export async function createProduct(
   const name = String(formData.get("name") || "").trim();
   const category = String(formData.get("category") || "") as Category;
   const volumeMlRaw = String(formData.get("volumeMl") || "").trim();
+  const caseSizeRaw = String(formData.get("caseSize") || "").trim();
   const purchasePrice = Number(formData.get("purchasePrice"));
   const sellPrice = Number(formData.get("sellPrice"));
   const imageUrl = String(formData.get("imageUrl") || "").trim();
+  const caseSize = caseSizeRaw ? Number(caseSizeRaw) : 1;
 
   if (!name || !Object.values(Category).includes(category)) {
     return { error: "Заполните название и категорию" };
@@ -79,12 +82,16 @@ export async function createProduct(
   if (!Number.isFinite(purchasePrice) || !Number.isFinite(sellPrice) || purchasePrice < 0 || sellPrice < 0) {
     return { error: "Некорректные цены" };
   }
+  if (!Number.isFinite(caseSize) || caseSize < 1) {
+    return { error: "Некорректный размер упаковки" };
+  }
 
   await prisma.product.create({
     data: {
       name,
       category,
       volumeMl: volumeMlRaw ? Number(volumeMlRaw) : null,
+      caseSize,
       purchasePrice,
       sellPrice,
       imageUrl: imageUrl || null,

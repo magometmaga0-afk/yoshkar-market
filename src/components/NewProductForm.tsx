@@ -51,6 +51,15 @@ export default function NewProductForm() {
         />
       </div>
       <div>
+        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Упаковка, шт</label>
+        <input
+          name="caseSize"
+          type="number"
+          defaultValue={1}
+          className="w-20 rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
+        />
+      </div>
+      <div>
         <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Закупка, ₽</label>
         <input
           name="purchasePrice"

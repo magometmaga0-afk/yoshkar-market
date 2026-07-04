@@ -13,10 +13,9 @@ export async function POST() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const existing = await prisma.product.count();
-  if (existing > 0) {
-    return NextResponse.json({ skipped: true, existing });
-  }
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.product.deleteMany();
 
   for (const p of seedProducts) {
     await prisma.product.create({
@@ -24,6 +23,7 @@ export async function POST() {
         name: p.name,
         category: p.category,
         volumeMl: p.volumeMl,
+        caseSize: p.caseSize,
         purchasePrice: p.purchasePrice,
         sellPrice: p.purchasePrice + MARKUP,
       },

@@ -16,6 +16,7 @@ export default async function HomePage() {
     category: p.category,
     volumeMl: p.volumeMl,
     sellPrice: Number(p.sellPrice),
+    caseSize: p.caseSize,
     imageUrl: p.imageUrl,
     inStock: p.inStock,
   }));

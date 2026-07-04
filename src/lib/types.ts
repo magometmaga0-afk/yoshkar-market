@@ -4,6 +4,7 @@ export type ProductDTO = {
   category: "BEER" | "ENERGY" | "OTHER";
   volumeMl: number | null;
   sellPrice: number;
+  caseSize: number;
   imageUrl: string | null;
   inStock: boolean;
 };

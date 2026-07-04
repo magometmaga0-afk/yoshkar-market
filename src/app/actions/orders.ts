@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { PICKUP_ADDRESS } from "@/lib/constants";
 
 export type CheckoutItem = { productId: string; quantity: number };
 
@@ -25,19 +26,9 @@ export async function createOrder(
   const paymentMethod = formData.get("paymentMethod") === "CARD" ? "CARD" : "CASH";
   const ageConfirmed = formData.get("ageConfirmed") === "on";
 
-  if (!customerName || !phone || !street) {
-    return { error: "Заполните имя, телефон и адрес доставки" };
+  if (!customerName || !phone) {
+    return { error: "Заполните имя и телефон" };
   }
-
-  const address = [
-    `г. Йошкар-Ола, ${street}`,
-    apartment && `кв./офис ${apartment}`,
-    entrance && `подъезд ${entrance}`,
-    floor && `этаж ${floor}`,
-    intercom && `домофон ${intercom}`,
-  ]
-    .filter(Boolean)
-    .join(", ");
 
   const cleanItems = (items || []).filter((i) => i.productId && i.quantity > 0);
   if (cleanItems.length === 0) {
@@ -49,12 +40,31 @@ export async function createOrder(
     where: { id: { in: productIds }, inStock: true },
   });
 
-  const hasAlcohol = cleanItems.some((i) => {
+  const isPickup = cleanItems.some((i) => {
     const product = products.find((p) => p.id === i.productId);
     return product?.category === "BEER";
   });
-  if (hasAlcohol && !ageConfirmed) {
+
+  if (isPickup && !ageConfirmed) {
     return { error: "Подтвердите, что вам есть 18 лет — в заказе есть пиво" };
+  }
+
+  let address: string;
+  if (isPickup) {
+    address = `Самовывоз: ${PICKUP_ADDRESS}`;
+  } else {
+    if (!street) {
+      return { error: "Заполните адрес доставки" };
+    }
+    address = [
+      `г. Йошкар-Ола, ${street}`,
+      apartment && `кв./офис ${apartment}`,
+      entrance && `подъезд ${entrance}`,
+      floor && `этаж ${floor}`,
+      intercom && `домофон ${intercom}`,
+    ]
+      .filter(Boolean)
+      .join(", ");
   }
 
   let totalAmount = 0;
@@ -96,6 +106,7 @@ export async function createOrder(
       comment: comment || null,
       paymentMethod,
       ageConfirmed,
+      isPickup,
       totalAmount,
       totalCost,
       totalProfit: totalAmount - totalCost,

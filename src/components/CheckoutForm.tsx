@@ -8,6 +8,7 @@ import { createOrder, type OrderFormState } from "@/app/actions/orders";
 import AddressAutocomplete from "@/components/AddressAutocomplete";
 import PhoneInput from "@/components/PhoneInput";
 import Spinner from "@/components/Spinner";
+import { PICKUP_ADDRESS } from "@/lib/constants";
 
 const initialState: OrderFormState = {};
 
@@ -61,14 +62,15 @@ export default function CheckoutForm() {
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium">{item.name}</p>
                   <p className="text-xs text-foreground/50">
-                    {item.sellPrice} ₽ {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
+                    {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""} · уп.{" "}
+                    {item.caseSize} шт
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-2 rounded-full bg-background p-1">
                   <button
                     type="button"
-                    onClick={() => setQuantity(item.productId, item.quantity - 1)}
-                    aria-label="Убавить"
+                    onClick={() => setQuantity(item.productId, item.quantity - item.caseSize)}
+                    aria-label="Убавить упаковку"
                     className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
                   >
                     −
@@ -77,12 +79,12 @@ export default function CheckoutForm() {
                     key={item.quantity}
                     className="w-5 animate-bounce-once text-center text-sm font-semibold"
                   >
-                    {item.quantity}
+                    {item.quantity / item.caseSize}
                   </span>
                   <button
                     type="button"
-                    onClick={() => setQuantity(item.productId, item.quantity + 1)}
-                    aria-label="Добавить"
+                    onClick={() => setQuantity(item.productId, item.quantity + item.caseSize)}
+                    aria-label="Добавить упаковку"
                     className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
                   >
                     +
@@ -119,50 +121,66 @@ export default function CheckoutForm() {
                 <label className="mb-1 block text-xs font-medium text-foreground/50">Телефон</label>
                 <PhoneInput />
               </div>
-              <div>
-                <label className="mb-1 block text-xs font-medium text-foreground/50">Город</label>
-                <input
-                  value="Йошкар-Ола"
-                  disabled
-                  className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] text-foreground/50"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-medium text-foreground/50">Улица и дом</label>
-                <AddressAutocomplete />
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="mb-1 block text-xs font-medium text-foreground/50">Квартира/офис</label>
-                  <input
-                    name="apartment"
-                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
-                  />
+              {hasAlcohol ? (
+                <div className="rounded-xl bg-amber-50 p-3.5 text-sm text-amber-900">
+                  <p className="font-medium">📍 Самовывоз</p>
+                  <p className="mt-1">
+                    В заказе есть пиво — доставка курьером недоступна по закону. Заберите заказ
+                    сами: {PICKUP_ADDRESS}.
+                  </p>
                 </div>
-                <div>
-                  <label className="mb-1 block text-xs font-medium text-foreground/50">Этаж</label>
-                  <input
-                    name="floor"
-                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="mb-1 block text-xs font-medium text-foreground/50">Подъезд</label>
-                  <input
-                    name="entrance"
-                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-xs font-medium text-foreground/50">Домофон</label>
-                  <input
-                    name="intercom"
-                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
-                  />
-                </div>
-              </div>
+              ) : (
+                <>
+                  <div>
+                    <label className="mb-1 block text-xs font-medium text-foreground/50">Город</label>
+                    <input
+                      value="Йошкар-Ола"
+                      disabled
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] text-foreground/50"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-xs font-medium text-foreground/50">
+                      Улица и дом
+                    </label>
+                    <AddressAutocomplete />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="mb-1 block text-xs font-medium text-foreground/50">
+                        Квартира/офис
+                      </label>
+                      <input
+                        name="apartment"
+                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-xs font-medium text-foreground/50">Этаж</label>
+                      <input
+                        name="floor"
+                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="mb-1 block text-xs font-medium text-foreground/50">Подъезд</label>
+                      <input
+                        name="entrance"
+                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-1 block text-xs font-medium text-foreground/50">Домофон</label>
+                      <input
+                        name="intercom"
+                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
               <div>
                 <label className="mb-1 block text-xs font-medium text-foreground/50">Комментарий</label>
                 <textarea
