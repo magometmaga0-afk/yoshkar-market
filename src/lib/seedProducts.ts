@@ -56,7 +56,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Мягкий Солод Светлое 4.2% (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 58, caseSize: 12, imageUrl: "/myagkiy-solod-42-stb.jpg" },
   { name: "Миллер (ст/б)", category: Category.BEER, volumeMl: 500, purchasePrice: 72, caseSize: 20, imageUrl: "/miller-stb.jpg" },
   { name: "Корона Экстра (ст/б)", category: Category.BEER, volumeMl: 355, purchasePrice: 118, caseSize: 24, imageUrl: "/corona-extra-stb.jpg" },
-  { name: "Козел Тёмное (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 88, caseSize: 20 },
+  { name: "Козел Тёмное (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 88, caseSize: 20, imageUrl: "/kozel-temnoe-stb.jpg" },
   { name: "Козел Светлое (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 88, caseSize: 20, imageUrl: "/kozel-svetloe-stb.jpg" },
   { name: "Жигули Барное (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 68, caseSize: 20, imageUrl: "/zhiguli-barnoe-stb.jpg" },
   { name: "Жигули 1968 (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 64, caseSize: 20, imageUrl: "/zhiguli-1968-stb.jpg" },
