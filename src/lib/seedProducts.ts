@@ -76,6 +76,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Велкопоповицкий Козел Тёмное (ж/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 88, caseSize: 24, imageUrl: "/kozel-temnoe-jb.jpg" },
   { name: "Велкопоповицкий Козел Светлое (ж/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 88, caseSize: 24, imageUrl: "/kozel-svetloe-jb.jpg" },
   { name: "Бад (ж/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 100, caseSize: 24, imageUrl: "/bad-jb.jpg" },
+  { name: "Ловенбрау (ж/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 82, caseSize: 24 },
 
   // Энергетики
   { name: "Adrenaline Rush без сахара (белый)", category: Category.ENERGY, volumeMl: 449, purchasePrice: 98, caseSize: 12, imageUrl: "/adrenaline-rush-zero-white.jpg" },
@@ -113,9 +114,27 @@ export const seedProducts: SeedProduct[] = [
   { name: "Пепси 2л", category: Category.OTHER, volumeMl: 2000, purchasePrice: 85, caseSize: 6, imageUrl: "/pepsi-2l.jpg" },
   { name: "Фанта 2л", category: Category.OTHER, volumeMl: 2000, purchasePrice: 85, caseSize: 6, imageUrl: "/fanta-2l.jpg" },
   { name: "Пепси 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 55, caseSize: 12, imageUrl: "/pepsi-1l.jpg" },
+  { name: "Квас \"Вятский Хлебный\" (ПЭТ)", category: Category.OTHER, volumeMl: 1500, purchasePrice: 105, caseSize: 6 },
+  { name: "Фанта 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 58, caseSize: 12 },
+  { name: "Спрайт 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 58, caseSize: 12 },
+  { name: "Вода \"Сестрица\" природная газ. 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 35, caseSize: 6 },
+  { name: "Вода \"Сестрица\" природная негаз. 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 35, caseSize: 6 },
+  { name: "Вода \"Сестрица\" б/г 0.5л", category: Category.OTHER, volumeMl: 500, purchasePrice: 25, caseSize: 12 },
+  { name: "Сок \"Джу100\" Яблочно-грушевый 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 54, caseSize: 12 },
+  { name: "Напиток \"Ярмарка\" Лимонад (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6 },
+  { name: "Напиток \"Ярмарка\" Тархун (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6 },
+  { name: "Напиток \"Ярмарка\" Мохито (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6 },
+  { name: "Напиток \"Ярмарка\" Клубника (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6 },
+  { name: "Напиток \"Натахтари\" Тархун (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20 },
+  { name: "Напиток \"Натахтари\" Груша (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20 },
+  { name: "Напиток \"Натахтари\" Лимон и лайм (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20 },
+  { name: "Напиток \"Натахтари\" Фейхоа (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20 },
+  { name: "Добрый Кола (ж/б)", category: Category.OTHER, volumeMl: 330, purchasePrice: 55, caseSize: 24 },
+  { name: "Кола (Иран, ж/б)", category: Category.OTHER, volumeMl: 300, purchasePrice: 57, caseSize: 24 },
 
   // Снеки и сладости
   { name: "Чоко Пай 6шт", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16, imageUrl: "/choco-pie-6pack.jpg" },
+  { name: "Шоколад молочный \"Алёнка\" 75гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 78, caseSize: 16 },
   { name: "Вафли \"Зебра\" 40гр с карам. арахис и изюм", category: Category.SNACKS, volumeMl: null, purchasePrice: 33, caseSize: 15, imageUrl: "/vafli-zebra.jpg" },
   { name: "Печенье Твикс 55гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 40, imageUrl: "/twix.jpg" },
   { name: "Конфета \"Баунти\" 55гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 32, imageUrl: "/bounty.jpg" },
@@ -128,8 +147,13 @@ export const seedProducts: SeedProduct[] = [
   { name: "Кофе Жокей \"Импер\" 75гр раст.субл. м/у", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 168, caseSize: 12 },
   { name: "Гринфилд \"Голден Цейлон\" 25пак черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 72, caseSize: 10, imageUrl: "/greenfield-golden-ceylon.jpg" },
   { name: "Тесс \"Плеже\" 25пак черн. с доб.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 60, caseSize: 10, imageUrl: "/tess-plaisir.jpg" },
+  { name: "Принцесса \"Нури\" Высокогорный 100пак. черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 148, caseSize: 18 },
+  { name: "Кофе \"Нескафе 3в1\" Классик 14.5гр", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 290, caseSize: 20 },
 
   // Консервы
   { name: "Сардина в т/с с овощ. гарн. 240гр ГОСТ (Сохраним Традиции)", category: Category.CANNED, volumeMl: null, purchasePrice: 110, caseSize: 24 },
   { name: "Килька в т/с красная банка", category: Category.CANNED, volumeMl: null, purchasePrice: 49, caseSize: 1 },
+  { name: "Скумбрия в масле (Сохраним традиции) 240гр", category: Category.CANNED, volumeMl: null, purchasePrice: 165, caseSize: 24 },
+  { name: "Сгущенка \"МариМолоко\" 250гр", category: Category.CANNED, volumeMl: null, purchasePrice: 52, caseSize: 24 },
+  { name: "Горошек \"Фрау Марта\" 310гр (ж/б)", category: Category.CANNED, volumeMl: null, purchasePrice: 68, caseSize: 15 },
 ];
