@@ -2,6 +2,11 @@ import { Category } from "@/generated/prisma/client";
 
 export const MARKUP = 10;
 
+export function getMarkup(category: Category): number {
+  // Чай и кофе — наценка +20₽ вместо стандартных +10₽.
+  return category === Category.COFFEE_TEA ? 20 : MARKUP;
+}
+
 export type SeedProduct = {
   name: string;
   category: Category;

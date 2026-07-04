@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { seedProducts, MARKUP } from "../src/lib/seedProducts";
+import { seedProducts, getMarkup } from "../src/lib/seedProducts";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
@@ -14,7 +14,7 @@ async function main() {
       volumeMl: p.volumeMl,
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
-      sellPrice: p.purchasePrice + MARKUP,
+      sellPrice: p.purchasePrice + getMarkup(p.category),
     };
     await prisma.product.upsert({
       where: { name: p.name },

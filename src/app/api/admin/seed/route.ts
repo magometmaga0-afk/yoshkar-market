@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { ADMIN_COOKIE_NAME, verifySessionToken } from "@/lib/adminAuth";
-import { seedProducts, MARKUP } from "@/lib/seedProducts";
+import { seedProducts, getMarkup } from "@/lib/seedProducts";
 
 export async function POST() {
   const secret = process.env.ADMIN_SESSION_SECRET;
@@ -20,7 +20,7 @@ export async function POST() {
       volumeMl: p.volumeMl,
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
-      sellPrice: p.purchasePrice + MARKUP,
+      sellPrice: p.purchasePrice + getMarkup(p.category),
     };
     await prisma.product.upsert({
       where: { name: p.name },
