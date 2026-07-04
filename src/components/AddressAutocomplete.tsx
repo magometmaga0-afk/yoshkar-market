@@ -7,29 +7,40 @@ export default function AddressAutocomplete() {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const skipNextFetchRef = useRef(false);
 
   useEffect(() => {
+    if (skipNextFetchRef.current) {
+      skipNextFetchRef.current = false;
+      return;
+    }
+
     if (value.trim().length < 3) {
       setSuggestions([]);
       return;
     }
 
+    const controller = new AbortController();
     const timeout = setTimeout(async () => {
       try {
         const res = await fetch("/api/address-suggest", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query: value }),
+          signal: controller.signal,
         });
         const data = await res.json();
         setSuggestions(data.suggestions ?? []);
         setOpen(true);
       } catch {
-        setSuggestions([]);
+        // запрос отменён более новым вводом или сеть недоступна — молча пропускаем
       }
     }, 300);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
   }, [value]);
 
   useEffect(() => {
@@ -61,6 +72,7 @@ export default function AddressAutocomplete() {
               key={s}
               type="button"
               onClick={() => {
+                skipNextFetchRef.current = true;
                 setValue(s);
                 setSuggestions([]);
                 setOpen(false);

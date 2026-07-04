@@ -32,7 +32,7 @@ function telHref(phone: string) {
 }
 
 function mapsHref(address: string) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  return `https://yandex.ru/maps/?text=${encodeURIComponent(address)}`;
 }
 
 export default async function AdminOrdersPage() {
