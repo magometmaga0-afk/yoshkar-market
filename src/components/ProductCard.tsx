@@ -43,9 +43,11 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
             {product.volumeMl} мл
           </span>
         )}
-        <span className="absolute right-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
-          уп. {product.caseSize} шт
-        </span>
+        {product.caseSize > 1 && (
+          <span className="absolute right-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+            уп. {product.caseSize} шт
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-3">
@@ -56,7 +58,9 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
         <div className="mt-auto space-y-2">
           <div className="flex items-baseline justify-between">
             <span className="text-lg font-bold">{packagePrice} ₽</span>
-            <span className="text-xs text-foreground/50">{product.sellPrice} ₽/шт</span>
+            {product.caseSize > 1 && (
+              <span className="text-xs text-foreground/50">{product.sellPrice} ₽/шт</span>
+            )}
           </div>
 
           <div className="flex items-center justify-end">
@@ -64,7 +68,7 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
               <button
                 onClick={() => quantity > 0 && setQuantity(product.id, quantity - product.caseSize)}
                 disabled={quantity === 0}
-                aria-label="Убавить упаковку"
+                aria-label={product.caseSize > 1 ? "Убавить упаковку" : "Убавить"}
                 className="flex h-8 w-8 items-center justify-center rounded-full text-base leading-none disabled:opacity-40 active:scale-90"
               >
                 −
@@ -90,7 +94,7 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
                     setQuantity(product.id, quantity + product.caseSize);
                   }
                 }}
-                aria-label="Добавить упаковку"
+                aria-label={product.caseSize > 1 ? "Добавить упаковку" : "Добавить"}
                 className="flex h-8 w-8 items-center justify-center rounded-full text-base leading-none active:scale-90"
               >
                 +

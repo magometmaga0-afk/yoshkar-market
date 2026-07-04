@@ -62,15 +62,15 @@ export default function CheckoutForm() {
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium">{item.name}</p>
                   <p className="text-xs text-foreground/50">
-                    {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""} · уп.{" "}
-                    {item.caseSize} шт
+                    {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
+                    {item.caseSize > 1 ? ` · уп. ${item.caseSize} шт` : ""}
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-2 rounded-full bg-background p-1">
                   <button
                     type="button"
                     onClick={() => setQuantity(item.productId, item.quantity - item.caseSize)}
-                    aria-label="Убавить упаковку"
+                    aria-label={item.caseSize > 1 ? "Убавить упаковку" : "Убавить"}
                     className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
                   >
                     −
@@ -84,7 +84,7 @@ export default function CheckoutForm() {
                   <button
                     type="button"
                     onClick={() => setQuantity(item.productId, item.quantity + item.caseSize)}
-                    aria-label="Добавить упаковку"
+                    aria-label={item.caseSize > 1 ? "Добавить упаковку" : "Добавить"}
                     className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
                   >
                     +
