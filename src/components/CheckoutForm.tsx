@@ -8,7 +8,7 @@ import { createOrder, type OrderFormState } from "@/app/actions/orders";
 import AddressAutocomplete from "@/components/AddressAutocomplete";
 import PhoneInput from "@/components/PhoneInput";
 import Spinner from "@/components/Spinner";
-import { PICKUP_ADDRESS } from "@/lib/constants";
+import { PICKUP_ADDRESS, MIN_ORDER_AMOUNT, WORKING_HOURS, isWithinWorkingHours } from "@/lib/constants";
 
 const initialState: OrderFormState = {};
 
@@ -21,6 +21,8 @@ export default function CheckoutForm() {
 
   const hasAlcohol = items.some((i) => i.category === "BEER");
   const total = items.reduce((sum, i) => sum + i.quantity * i.sellPrice, 0);
+  const belowMinimum = total < MIN_ORDER_AMOUNT;
+  const closed = !isWithinWorkingHours();
 
   const actionItems = useMemo(
     () => items.map((i) => ({ productId: i.productId, quantity: i.quantity })),
@@ -29,6 +31,7 @@ export default function CheckoutForm() {
 
   const boundAction = createOrder.bind(null, actionItems);
   const [state, formAction, isPending] = useActionState(boundAction, initialState);
+  const submitDisabled = isPending || belowMinimum || closed;
 
   useEffect(() => {
     if (state.orderId) {
@@ -105,6 +108,20 @@ export default function CheckoutForm() {
               <span>{total} ₽</span>
             </div>
           </div>
+
+          {closed && (
+            <p className="rounded-2xl bg-red-50 p-3.5 text-sm text-red-700">
+              🕒 Принимаем заказы с {WORKING_HOURS.start}:00 до {WORKING_HOURS.end}:00. Сейчас
+              магазин не оформляет заказы — загляните в рабочее время.
+            </p>
+          )}
+
+          {!closed && belowMinimum && (
+            <p className="rounded-2xl bg-amber-50 p-3.5 text-sm text-amber-900">
+              Минимальная сумма заказа {MIN_ORDER_AMOUNT} ₽. Добавьте ещё товаров на{" "}
+              {MIN_ORDER_AMOUNT - total} ₽.
+            </p>
+          )}
 
           <form id="checkout-form" action={formAction} className="space-y-4">
             <div className="space-y-3 rounded-2xl border border-border bg-card p-4">
@@ -228,7 +245,7 @@ export default function CheckoutForm() {
             <button
               type="submit"
               form="checkout-form"
-              disabled={isPending}
+              disabled={submitDisabled}
               className="block w-full rounded-2xl bg-brand py-3.5 text-center font-semibold text-white shadow-sm transition duration-200 hover:brightness-105 active:scale-[0.97] disabled:opacity-60 disabled:active:scale-100"
             >
               {isPending ? (
@@ -247,7 +264,7 @@ export default function CheckoutForm() {
         <button
           type="submit"
           form="checkout-form"
-          disabled={isPending}
+          disabled={submitDisabled}
           className="mx-auto block w-full max-w-lg rounded-2xl bg-brand py-3.5 text-center font-semibold text-white shadow-sm transition duration-200 hover:brightness-105 active:scale-[0.97] disabled:opacity-60 disabled:active:scale-100"
         >
           {isPending ? (

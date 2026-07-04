@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { PICKUP_ADDRESS } from "@/lib/constants";
+import { PICKUP_ADDRESS, MIN_ORDER_AMOUNT, WORKING_HOURS, isWithinWorkingHours } from "@/lib/constants";
 
 export type CheckoutItem = { productId: string; quantity: number };
 
@@ -25,6 +25,12 @@ export async function createOrder(
   const comment = String(formData.get("comment") || "").trim();
   const paymentMethod = formData.get("paymentMethod") === "CARD" ? "CARD" : "CASH";
   const ageConfirmed = formData.get("ageConfirmed") === "on";
+
+  if (!isWithinWorkingHours()) {
+    return {
+      error: `Принимаем заказы с ${WORKING_HOURS.start}:00 до ${WORKING_HOURS.end}:00. Загляните в рабочее время!`,
+    };
+  }
 
   if (!customerName || !phone) {
     return { error: "Заполните имя и телефон" };
@@ -96,6 +102,12 @@ export async function createOrder(
 
   if (orderItemsData.length === 0) {
     return { error: "Товары из корзины сейчас недоступны" };
+  }
+
+  if (totalAmount < MIN_ORDER_AMOUNT) {
+    return {
+      error: `Минимальная сумма заказа ${MIN_ORDER_AMOUNT} ₽. Добавьте ещё товаров на ${MIN_ORDER_AMOUNT - totalAmount} ₽.`,
+    };
   }
 
   const order = await prisma.order.create({
