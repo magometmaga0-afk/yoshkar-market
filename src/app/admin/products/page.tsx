@@ -17,7 +17,7 @@ export default async function AdminProductsPage() {
   });
 
   return (
-    <>
+    <div className="mx-auto w-full max-w-4xl px-4 py-6 safe-bottom">
       <AdminNav />
 
       <h2 className="mb-3 font-semibold">Добавить товар</h2>
@@ -60,6 +60,6 @@ export default async function AdminProductsPage() {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
