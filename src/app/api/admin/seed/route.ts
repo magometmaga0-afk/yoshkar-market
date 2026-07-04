@@ -13,22 +13,21 @@ export async function POST() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  await prisma.orderItem.deleteMany();
-  await prisma.order.deleteMany();
-  await prisma.product.deleteMany();
-
+  // Upsert by product name — never touches Order/OrderItem history.
   for (const p of seedProducts) {
-    await prisma.product.create({
-      data: {
-        name: p.name,
-        category: p.category,
-        volumeMl: p.volumeMl,
-        caseSize: p.caseSize,
-        purchasePrice: p.purchasePrice,
-        sellPrice: p.purchasePrice + MARKUP,
-      },
+    const data = {
+      category: p.category,
+      volumeMl: p.volumeMl,
+      caseSize: p.caseSize,
+      purchasePrice: p.purchasePrice,
+      sellPrice: p.purchasePrice + MARKUP,
+    };
+    await prisma.product.upsert({
+      where: { name: p.name },
+      create: { name: p.name, ...data },
+      update: data,
     });
   }
 
-  return NextResponse.json({ created: seedProducts.length });
+  return NextResponse.json({ synced: seedProducts.length });
 }

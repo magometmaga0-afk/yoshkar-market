@@ -31,7 +31,7 @@ enum OrderStatus {
 
 model Product {
   id            String      @id @default(cuid())
-  name          String
+  name          String      @unique
   category      Category
   volumeMl      Int?
   caseSize      Int         @default(1)
