@@ -12,6 +12,7 @@ type Product = {
   purchasePrice: number;
   sellPrice: number;
   imageUrl: string | null;
+  description: string | null;
   inStock: boolean;
 };
 
@@ -53,13 +54,15 @@ export default function ProductRow({
   const [purchasePrice, setPurchasePrice] = useState(String(product.purchasePrice));
   const [sellPrice, setSellPrice] = useState(String(product.sellPrice));
   const [imageUrl, setImageUrl] = useState(product.imageUrl ?? "");
+  const [description, setDescription] = useState(product.description ?? "");
   const [isPending, startTransition] = useTransition();
 
   const dirty =
     caseSize !== String(product.caseSize) ||
     purchasePrice !== String(product.purchasePrice) ||
     sellPrice !== String(product.sellPrice) ||
-    imageUrl !== (product.imageUrl ?? "");
+    imageUrl !== (product.imageUrl ?? "") ||
+    description !== (product.description ?? "");
 
   return (
     <div
@@ -104,6 +107,16 @@ export default function ProductRow({
         type="url"
         placeholder="/photo.jpg"
       />
+      <label className="mt-2.5 block">
+        <span className="mb-1 block text-xs text-foreground/50">Описание</span>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          rows={2}
+          placeholder="Краткое описание товара для карточки"
+          className="w-full rounded-xl border border-border bg-background px-2.5 py-2 text-sm outline-none focus:border-brand"
+        />
+      </label>
 
       {dirty && (
         <button
@@ -115,7 +128,7 @@ export default function ProductRow({
             if (!Number.isFinite(size) || size < 1) return;
             if (!Number.isFinite(purchase) || !Number.isFinite(sell)) return;
             startTransition(() => {
-              updateProductPrices(product.id, purchase, sell, imageUrl, size);
+              updateProductPrices(product.id, purchase, sell, imageUrl, size, description);
             });
           }}
           className="mt-3 w-full rounded-xl bg-brand py-2 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98] disabled:opacity-50"

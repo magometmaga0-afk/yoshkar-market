@@ -52,13 +52,21 @@ export async function updateProductPrices(
   sellPrice: number,
   imageUrl: string,
   caseSize: number,
+  description: string,
 ) {
   await prisma.product.update({
     where: { id: productId },
-    data: { purchasePrice, sellPrice, imageUrl: imageUrl.trim() || null, caseSize },
+    data: {
+      purchasePrice,
+      sellPrice,
+      imageUrl: imageUrl.trim() || null,
+      caseSize,
+      description: description.trim() || null,
+    },
   });
   revalidatePath("/admin/products");
   revalidatePath("/");
+  revalidatePath(`/product/${productId}`);
 }
 
 export type CreateProductState = { error?: string };

@@ -20,6 +20,7 @@ export default async function HomePage() {
     // закупаются коробками — реальный размер упаковки виден только в админке.
     caseSize: ["SNACKS", "COFFEE_TEA", "CANNED"].includes(p.category) ? 1 : p.caseSize,
     imageUrl: p.imageUrl,
+    description: p.description,
     inStock: p.inStock,
   }));
 

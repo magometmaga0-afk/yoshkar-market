@@ -40,6 +40,7 @@ export default async function AdminProductsPage() {
               purchasePrice: Number(p.purchasePrice),
               sellPrice: Number(p.sellPrice),
               imageUrl: p.imageUrl,
+              description: p.description,
               inStock: p.inStock,
             }}
             categoryLabel={CATEGORY_LABELS[p.category]}

@@ -8,7 +8,10 @@ export default function CartBar() {
   const pathname = usePathname();
   const items = useCartStore((s) => s.items);
 
-  const hidden = pathname.startsWith("/checkout") || pathname.startsWith("/admin");
+  const hidden =
+    pathname.startsWith("/checkout") ||
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/product");
   if (hidden) return null;
 
   const count = items.reduce((sum, i) => sum + i.quantity, 0);

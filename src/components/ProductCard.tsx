@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCartStore } from "@/store/cart";
 import type { ProductDTO } from "@/lib/types";
 
@@ -26,40 +27,44 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
 
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-md">
-      <div
-        className={`relative aspect-square w-full ${
-          hasPhoto ? "bg-white" : `bg-gradient-to-br ${tile.gradient}`
-        }`}
-      >
-        {hasPhoto ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={product.imageUrl!}
-            alt={product.name}
-            className="absolute inset-0 h-full w-full object-contain p-3"
-          />
-        ) : (
-          <span className="absolute inset-0 flex items-center justify-center text-5xl">
-            {tile.emoji}
-          </span>
-        )}
-        {product.volumeMl && (
-          <span className="absolute left-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
-            {product.volumeMl} мл
-          </span>
-        )}
-        {product.caseSize > 1 && (
-          <span className="absolute right-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
-            уп. {product.caseSize} шт
-          </span>
-        )}
-      </div>
+      <Link href={`/product/${product.id}`} className="contents">
+        <div
+          className={`relative aspect-square w-full ${
+            hasPhoto ? "bg-white" : `bg-gradient-to-br ${tile.gradient}`
+          }`}
+        >
+          {hasPhoto ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={product.imageUrl!}
+              alt={product.name}
+              className="absolute inset-0 h-full w-full object-contain p-3"
+            />
+          ) : (
+            <span className="absolute inset-0 flex items-center justify-center text-5xl">
+              {tile.emoji}
+            </span>
+          )}
+          {product.volumeMl && (
+            <span className="absolute left-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+              {product.volumeMl} мл
+            </span>
+          )}
+          {product.caseSize > 1 && (
+            <span className="absolute right-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+              уп. {product.caseSize} шт
+            </span>
+          )}
+        </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-3">
-        <h3 className="line-clamp-2 min-h-[2.5em] text-sm font-medium leading-tight">
-          {product.name}
-        </h3>
+        <div className="px-3 pt-3">
+          <h3 className="line-clamp-2 min-h-[2.5em] text-sm font-medium leading-tight">
+            {product.name}
+          </h3>
+        </div>
+      </Link>
 
+      <div className="flex flex-1 flex-col gap-2 px-3 pb-3">
         <div className="mt-auto space-y-2">
           <div className="flex items-baseline justify-between">
             <span className="text-lg font-bold">{packagePrice} ₽</span>

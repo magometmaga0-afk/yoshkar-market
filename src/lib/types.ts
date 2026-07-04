@@ -6,5 +6,6 @@ export type ProductDTO = {
   sellPrice: number;
   caseSize: number;
   imageUrl: string | null;
+  description: string | null;
   inStock: boolean;
 };
