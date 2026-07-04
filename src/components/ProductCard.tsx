@@ -19,17 +19,22 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
   const addItem = useCartStore((s) => s.addItem);
   const setQuantity = useCartStore((s) => s.setQuantity);
   const tile = CATEGORY_TILE[product.category];
+  const hasPhoto = Boolean(product.imageUrl);
 
   const packages = quantity / product.caseSize;
   const packagePrice = product.sellPrice * product.caseSize;
 
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-md">
-      <div className={`relative aspect-square w-full bg-gradient-to-br ${tile.gradient}`}>
-        {product.imageUrl ? (
+      <div
+        className={`relative aspect-square w-full ${
+          hasPhoto ? "bg-white" : `bg-gradient-to-br ${tile.gradient}`
+        }`}
+      >
+        {hasPhoto ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={product.imageUrl}
+            src={product.imageUrl!}
             alt={product.name}
             className="absolute inset-0 h-full w-full object-contain p-3"
           />
@@ -39,12 +44,12 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
           </span>
         )}
         {product.volumeMl && (
-          <span className="absolute left-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+          <span className="absolute left-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
             {product.volumeMl} мл
           </span>
         )}
         {product.caseSize > 1 && (
-          <span className="absolute right-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+          <span className="absolute right-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
             уп. {product.caseSize} шт
           </span>
         )}
