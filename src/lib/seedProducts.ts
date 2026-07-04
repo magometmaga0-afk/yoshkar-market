@@ -109,18 +109,18 @@ export const seedProducts: SeedProduct[] = [
 
   // Снеки и сладости
   { name: "Чоко Пай 6шт", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16 },
-  { name: "Вафли \"Зебра\" 40гр с карам. арахис и изюм", category: Category.SNACKS, volumeMl: null, purchasePrice: 33, caseSize: 15 },
-  { name: "Печенье Твикс 55гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 40 },
-  { name: "Конфета \"Баунти\" 55гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 32 },
-  { name: "Халва подсолнечная 5кг", category: Category.SNACKS, volumeMl: null, purchasePrice: 248, caseSize: 1 },
-  { name: "Шоколад \"Альпен Гольд\" с фундуком и изюмом 85гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 79, caseSize: 21 },
-  { name: "Шоколад \"Альпен Гольд\" с клубнично-йогуртовой начинкой 85гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 79, caseSize: 21 },
+  { name: "Вафли \"Зебра\" 40гр с карам. арахис и изюм", category: Category.SNACKS, volumeMl: null, purchasePrice: 33, caseSize: 15, imageUrl: "/vafli-zebra.jpg" },
+  { name: "Печенье Твикс 55гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 40, imageUrl: "/twix.jpg" },
+  { name: "Конфета \"Баунти\" 55гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 32, imageUrl: "/bounty.jpg" },
+  { name: "Халва подсолнечная 5кг", category: Category.SNACKS, volumeMl: null, purchasePrice: 248, caseSize: 1, imageUrl: "/halva.jpg" },
+  { name: "Шоколад \"Альпен Гольд\" с фундуком и изюмом 85гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 79, caseSize: 21, imageUrl: "/alpen-gold-fundu-izum.jpg" },
+  { name: "Шоколад \"Альпен Гольд\" с клубнично-йогуртовой начинкой 85гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 79, caseSize: 21, imageUrl: "/alpen-gold-klubnika-yogurt.jpg" },
 
   // Чай и кофе
   { name: "Кофе Жокей \"Голд\" 75гр м/у", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 168, caseSize: 12 },
   { name: "Кофе Жокей \"Импер\" 75гр раст.субл. м/у", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 168, caseSize: 12 },
-  { name: "Гринфилд \"Голден Цейлон\" 25пак черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 72, caseSize: 10 },
-  { name: "Тесс \"Плеже\" 25пак черн. с доб.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 60, caseSize: 10 },
+  { name: "Гринфилд \"Голден Цейлон\" 25пак черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 72, caseSize: 10, imageUrl: "/greenfield-golden-ceylon.jpg" },
+  { name: "Тесс \"Плеже\" 25пак черн. с доб.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 60, caseSize: 10, imageUrl: "/tess-plaisir.jpg" },
 
   // Консервы
   { name: "Сардина в т/с с овощ. гарн. 240гр ГОСТ (Сохраним Традиции)", category: Category.CANNED, volumeMl: null, purchasePrice: 110, caseSize: 24 },
