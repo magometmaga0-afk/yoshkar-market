@@ -7,6 +7,9 @@ const CATEGORY_TILE: Record<ProductDTO["category"], { emoji: string; gradient: s
   BEER: { emoji: "🍺", gradient: "from-amber-200 to-amber-100" },
   ENERGY: { emoji: "⚡", gradient: "from-violet-200 to-sky-100" },
   OTHER: { emoji: "🥤", gradient: "from-sky-200 to-cyan-100" },
+  SNACKS: { emoji: "🍫", gradient: "from-orange-200 to-rose-100" },
+  COFFEE_TEA: { emoji: "☕", gradient: "from-stone-200 to-amber-100" },
+  CANNED: { emoji: "🥫", gradient: "from-emerald-200 to-lime-100" },
 };
 
 export default function ProductCard({ product }: { product: ProductDTO }) {

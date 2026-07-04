@@ -4,15 +4,24 @@ import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import type { ProductDTO } from "@/lib/types";
 
-const TABS: { key: "ALL" | "BEER" | "ENERGY" | "OTHER"; label: string; emoji: string }[] = [
+const TABS: {
+  key: "ALL" | "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED";
+  label: string;
+  emoji: string;
+}[] = [
   { key: "ALL", label: "Всё", emoji: "🛒" },
   { key: "BEER", label: "Пиво", emoji: "🍺" },
   { key: "ENERGY", label: "Энергетики", emoji: "⚡" },
   { key: "OTHER", label: "Напитки", emoji: "🥤" },
+  { key: "SNACKS", label: "Снеки", emoji: "🍫" },
+  { key: "COFFEE_TEA", label: "Чай и кофе", emoji: "☕" },
+  { key: "CANNED", label: "Консервы", emoji: "🥫" },
 ];
 
 export default function Catalog({ products }: { products: ProductDTO[] }) {
-  const [tab, setTab] = useState<"ALL" | "BEER" | "ENERGY" | "OTHER">("ALL");
+  const [tab, setTab] = useState<
+    "ALL" | "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED"
+  >("ALL");
 
   const filtered = useMemo(
     () => (tab === "ALL" ? products : products.filter((p) => p.category === tab)),

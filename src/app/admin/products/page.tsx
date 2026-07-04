@@ -9,6 +9,9 @@ const CATEGORY_LABELS: Record<string, string> = {
   BEER: "Пиво",
   ENERGY: "Энергетик",
   OTHER: "Напиток",
+  SNACKS: "Снек",
+  COFFEE_TEA: "Чай/кофе",
+  CANNED: "Консервы",
 };
 
 export default async function AdminProductsPage() {

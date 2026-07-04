@@ -40,6 +40,9 @@ export default function NewProductForm() {
           <option value="BEER">Пиво</option>
           <option value="ENERGY">Энергетик</option>
           <option value="OTHER">Напиток</option>
+          <option value="SNACKS">Снек</option>
+          <option value="COFFEE_TEA">Чай/кофе</option>
+          <option value="CANNED">Консервы</option>
         </select>
       </div>
       <div>
