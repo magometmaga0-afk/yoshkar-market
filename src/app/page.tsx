@@ -16,9 +16,9 @@ export default async function HomePage() {
     category: p.category,
     volumeMl: p.volumeMl,
     sellPrice: Number(p.sellPrice),
-    // Снеки продаются поштучно покупателю, даже если закупаются коробками —
-    // реальный размер упаковки для закупки виден только в админке.
-    caseSize: p.category === "SNACKS" ? 1 : p.caseSize,
+    // Снеки, чай/кофе и консервы продаются поштучно покупателю, даже если
+    // закупаются коробками — реальный размер упаковки виден только в админке.
+    caseSize: ["SNACKS", "COFFEE_TEA", "CANNED"].includes(p.category) ? 1 : p.caseSize,
     imageUrl: p.imageUrl,
     inStock: p.inStock,
   }));
