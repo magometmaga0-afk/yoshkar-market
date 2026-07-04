@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import AdminNav from "@/components/AdminNav";
 import OrderStatusSelect from "@/components/OrderStatusSelect";
 import AutoRefresh from "@/components/AutoRefresh";
+import NewOrderAlert from "@/components/NewOrderAlert";
 
 export const dynamic = "force-dynamic";
 
@@ -48,7 +49,8 @@ export default async function AdminOrdersPage() {
 
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-6 safe-bottom">
-      <AutoRefresh intervalMs={30000} />
+      <AutoRefresh />
+      <NewOrderAlert latestOrderId={orders[0]?.id ?? null} />
       <AdminNav />
 
       <div className="mb-6 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
