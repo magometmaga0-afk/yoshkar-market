@@ -5,6 +5,10 @@ import { createProduct, type CreateProductState } from "@/app/actions/admin";
 
 const initialState: CreateProductState = {};
 
+const inputClass =
+  "w-full rounded-xl border border-border bg-background px-2.5 py-2 text-sm outline-none focus:border-brand";
+const labelClass = "mb-1 block text-xs text-foreground/50";
+
 export default function NewProductForm() {
   const [state, formAction, isPending] = useActionState(createProduct, initialState);
   const formRef = useRef<HTMLFormElement>(null);
@@ -21,82 +25,58 @@ export default function NewProductForm() {
     <form
       ref={formRef}
       action={formAction}
-      className="mb-4 flex flex-wrap items-end gap-2 rounded-xl border border-black/10 p-4 dark:border-white/10"
+      className="mb-4 space-y-3 rounded-2xl border border-border bg-card p-4 shadow-sm"
     >
-      <div>
-        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Название</label>
-        <input
-          name="name"
-          required
-          className="w-48 rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
-        />
+      <label className="block">
+        <span className={labelClass}>Название</span>
+        <input name="name" required className={inputClass} />
+      </label>
+
+      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+        <label className="block">
+          <span className={labelClass}>Категория</span>
+          <select name="category" className={inputClass}>
+            <option value="BEER">Пиво</option>
+            <option value="ENERGY">Энергетик</option>
+            <option value="OTHER">Напиток</option>
+            <option value="SNACKS">Снек</option>
+            <option value="COFFEE_TEA">Чай/кофе</option>
+            <option value="CANNED">Консервы</option>
+          </select>
+        </label>
+        <label className="block">
+          <span className={labelClass}>Объём, мл</span>
+          <input name="volumeMl" type="number" className={inputClass} />
+        </label>
+        <label className="block">
+          <span className={labelClass}>Упаковка, шт</span>
+          <input name="caseSize" type="number" defaultValue={1} className={inputClass} />
+        </label>
+        <label className="block">
+          <span className={labelClass}>Закупка, ₽</span>
+          <input name="purchasePrice" type="number" required className={inputClass} />
+        </label>
       </div>
-      <div>
-        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Категория</label>
-        <select
-          name="category"
-          className="rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
-        >
-          <option value="BEER">Пиво</option>
-          <option value="ENERGY">Энергетик</option>
-          <option value="OTHER">Напиток</option>
-          <option value="SNACKS">Снек</option>
-          <option value="COFFEE_TEA">Чай/кофе</option>
-          <option value="CANNED">Консервы</option>
-        </select>
+
+      <div className="grid grid-cols-2 gap-2.5">
+        <label className="block">
+          <span className={labelClass}>Продажа, ₽</span>
+          <input name="sellPrice" type="number" required className={inputClass} />
+        </label>
+        <label className="block">
+          <span className={labelClass}>Ссылка на фото</span>
+          <input name="imageUrl" type="url" placeholder="https://..." className={inputClass} />
+        </label>
       </div>
-      <div>
-        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Объём, мл</label>
-        <input
-          name="volumeMl"
-          type="number"
-          className="w-20 rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
-        />
-      </div>
-      <div>
-        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Упаковка, шт</label>
-        <input
-          name="caseSize"
-          type="number"
-          defaultValue={1}
-          className="w-20 rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
-        />
-      </div>
-      <div>
-        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Закупка, ₽</label>
-        <input
-          name="purchasePrice"
-          type="number"
-          required
-          className="w-20 rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
-        />
-      </div>
-      <div>
-        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Продажа, ₽</label>
-        <input
-          name="sellPrice"
-          type="number"
-          required
-          className="w-20 rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
-        />
-      </div>
-      <div>
-        <label className="mb-1 block text-xs text-black/50 dark:text-white/50">Ссылка на фото</label>
-        <input
-          name="imageUrl"
-          type="url"
-          placeholder="https://..."
-          className="w-48 rounded border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/10"
-        />
-      </div>
+
       <button
         type="submit"
         disabled={isPending}
-        className="rounded bg-black px-3 py-1.5 text-sm font-medium text-white disabled:opacity-50 dark:bg-white dark:text-black"
+        className="w-full rounded-xl bg-brand py-2.5 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98] disabled:opacity-50 sm:w-auto sm:px-6"
       >
-        Добавить
+        {isPending ? "Добавляем..." : "Добавить товар"}
       </button>
-      {state.error && <p className="w-full text-sm text-red-600">{state.error}</p>}
+      {state.error && <p className="text-sm text-red-600">{state.error}</p>}
     </form>
   );
 }

@@ -5,11 +5,11 @@ import { updateOrderStatus } from "@/app/actions/admin";
 import type { OrderStatus } from "@/generated/prisma/client";
 
 const STATUS_COLORS: Record<string, string> = {
-  NEW: "bg-orange-100 text-orange-800 border-orange-300",
-  CONFIRMED: "bg-blue-100 text-blue-800 border-blue-300",
-  DELIVERING: "bg-purple-100 text-purple-800 border-purple-300",
-  DELIVERED: "bg-green-100 text-green-800 border-green-300",
-  CANCELLED: "bg-black/5 text-black/50 border-black/10",
+  NEW: "bg-orange-100 text-orange-800 border-orange-200",
+  CONFIRMED: "bg-blue-100 text-blue-800 border-blue-200",
+  DELIVERING: "bg-purple-100 text-purple-800 border-purple-200",
+  DELIVERED: "bg-green-100 text-green-800 border-green-200",
+  CANCELLED: "bg-foreground/5 text-foreground/50 border-border",
 };
 
 export default function OrderStatusSelect({
@@ -24,22 +24,27 @@ export default function OrderStatusSelect({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <select
-      value={status}
-      disabled={isPending}
-      onChange={(e) => {
-        const next = e.target.value as OrderStatus;
-        startTransition(() => {
-          updateOrderStatus(orderId, next);
-        });
-      }}
-      className={`shrink-0 rounded-xl border px-3 py-2.5 text-sm font-semibold disabled:opacity-50 ${STATUS_COLORS[status] ?? ""}`}
-    >
-      {Object.entries(labels).map(([value, label]) => (
-        <option key={value} value={value}>
-          {label}
-        </option>
-      ))}
-    </select>
+    <div className="relative shrink-0">
+      <select
+        value={status}
+        disabled={isPending}
+        onChange={(e) => {
+          const next = e.target.value as OrderStatus;
+          startTransition(() => {
+            updateOrderStatus(orderId, next);
+          });
+        }}
+        className={`appearance-none rounded-full border py-2 pl-3.5 pr-8 text-sm font-semibold shadow-sm outline-none transition disabled:opacity-50 ${STATUS_COLORS[status] ?? ""}`}
+      >
+        {Object.entries(labels).map(([value, label]) => (
+          <option key={value} value={value}>
+            {label}
+          </option>
+        ))}
+      </select>
+      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[10px] opacity-60">
+        ▾
+      </span>
+    </div>
   );
 }
