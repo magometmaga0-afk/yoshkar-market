@@ -77,7 +77,7 @@ export default function CheckoutForm() {
             {items.map((item) => (
               <div
                 key={item.productId}
-                className="flex items-center gap-3 border-b border-border p-3 last:border-b-0"
+                className="flex flex-col gap-3 border-b border-border p-3 last:border-b-0 sm:flex-row sm:items-center"
               >
                 <Link href={`/product/${item.productId}`} className="flex min-w-0 flex-1 items-center gap-3">
                   <div
@@ -99,45 +99,47 @@ export default function CheckoutForm() {
                     )}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium">{item.name}</p>
+                    <p className="sm:truncate text-sm font-medium">{item.name}</p>
                     <p className="text-xs text-foreground/50">
                       {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
                       {item.caseSize > 1 ? ` · уп. ${item.caseSize} шт` : ""}
                     </p>
                   </div>
                 </Link>
-                <div className="flex shrink-0 items-center gap-2 rounded-full bg-background p-1">
+                <div className="flex shrink-0 items-center justify-between gap-3 sm:justify-end">
+                  <div className="flex shrink-0 items-center gap-2 rounded-full bg-background p-1">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(item.productId, item.quantity - item.caseSize)}
+                      aria-label={item.caseSize > 1 ? "Убавить упаковку" : "Убавить"}
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
+                    >
+                      −
+                    </button>
+                    <span
+                      key={item.quantity}
+                      className="w-5 animate-bounce-once text-center text-sm font-semibold"
+                    >
+                      {item.quantity / item.caseSize}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(item.productId, item.quantity + item.caseSize)}
+                      aria-label={item.caseSize > 1 ? "Добавить упаковку" : "Добавить"}
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
+                    >
+                      +
+                    </button>
+                  </div>
                   <button
                     type="button"
-                    onClick={() => setQuantity(item.productId, item.quantity - item.caseSize)}
-                    aria-label={item.caseSize > 1 ? "Убавить упаковку" : "Убавить"}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
+                    onClick={() => removeItem(item.productId)}
+                    aria-label="Убрать"
+                    className="shrink-0 text-foreground/30"
                   >
-                    −
-                  </button>
-                  <span
-                    key={item.quantity}
-                    className="w-5 animate-bounce-once text-center text-sm font-semibold"
-                  >
-                    {item.quantity / item.caseSize}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setQuantity(item.productId, item.quantity + item.caseSize)}
-                    aria-label={item.caseSize > 1 ? "Добавить упаковку" : "Добавить"}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-base font-semibold shadow-sm transition active:scale-90"
-                  >
-                    +
+                    ✕
                   </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => removeItem(item.productId)}
-                  aria-label="Убрать"
-                  className="shrink-0 text-foreground/30"
-                >
-                  ✕
-                </button>
               </div>
             ))}
             <div className="flex items-center justify-between bg-background/60 p-3.5 font-semibold">

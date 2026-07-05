@@ -14,7 +14,7 @@ export default function ProductDetailBody({
   const hasPhoto = Boolean(product.imageUrl);
 
   return (
-    <>
+    <div className="pb-24 lg:pb-0">
       <div className="lg:grid lg:grid-cols-[1fr_1.1fr] lg:gap-8">
         <div
           className={`relative aspect-square w-full overflow-hidden rounded-2xl border border-border ${
@@ -36,8 +36,10 @@ export default function ProductDetailBody({
         </div>
 
         <div className="mt-5 lg:mt-0">
-          <p className="text-xs font-medium text-brand-dark">{CATEGORY_LABEL[product.category]}</p>
-          <h1 className="mt-1 text-xl font-bold leading-snug">{product.name}</h1>
+          <div className="pr-12 sm:pr-14">
+            <p className="text-xs font-medium text-brand-dark">{CATEGORY_LABEL[product.category]}</p>
+            <h1 className="mt-1 text-xl font-bold leading-snug">{product.name}</h1>
+          </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
             {product.volumeMl && (
@@ -81,6 +83,6 @@ export default function ProductDetailBody({
           <ProductDetailActions product={product} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
