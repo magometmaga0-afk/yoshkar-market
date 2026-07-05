@@ -106,8 +106,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Lit Energy Citrus Punch", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-citrus-punch.jpg" },
   { name: "Lit Energy Strawberry Bubblegum", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-strawberry-bubblegum.jpg" },
   { name: "Volt Гуава (ж/б)", category: Category.ENERGY, volumeMl: 450, purchasePrice: 74, caseSize: 24, imageUrl: "/volt-guava-jb.jpg" },
-  { name: "Горилла (ж/б) Личи", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, markup: 20 },
-  { name: "Горилла (ж/б) Груша", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, markup: 20 },
+  { name: "Горилла (ж/б) Личи и груша", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, markup: 20 },
   { name: "Флэш (ж/б) Ультра", category: Category.ENERGY, volumeMl: 450, purchasePrice: 63, caseSize: 24, markup: 10 },
 
   // Напитки
