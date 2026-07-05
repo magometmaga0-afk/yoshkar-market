@@ -3,9 +3,11 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { ADMIN_COOKIE_NAME, createSessionToken } from "@/lib/adminAuth";
 import { Category, OrderStatus } from "@/generated/prisma/client";
+import { sendSms, orderStatusSmsText } from "@/lib/sms";
 
 export type LoginState = { error?: string };
 
@@ -36,8 +38,19 @@ export async function adminLogout() {
 }
 
 export async function updateOrderStatus(orderId: string, status: OrderStatus) {
-  await prisma.order.update({ where: { id: orderId }, data: { status } });
+  const previous = await prisma.order.findUnique({
+    where: { id: orderId },
+    select: { status: true },
+  });
+  const order = await prisma.order.update({ where: { id: orderId }, data: { status } });
   revalidatePath("/admin");
+
+  if (previous && previous.status !== status) {
+    const text = orderStatusSmsText(status, order.id, order.isPickup);
+    if (text) {
+      after(() => sendSms(order.phone, text));
+    }
+  }
 }
 
 export async function toggleProductStock(productId: string, inStock: boolean) {
