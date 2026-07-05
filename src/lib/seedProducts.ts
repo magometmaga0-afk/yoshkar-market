@@ -66,7 +66,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Жигули 1968 (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 64, caseSize: 20, imageUrl: "/zhiguli-1968-stb.jpg" },
   { name: "Доктор Дизель Малина-Лайм (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 77, caseSize: 20, imageUrl: "/dr-diesel-malina-laym-stb.jpg" },
   { name: "Гринбит (ст/б)", category: Category.BEER, volumeMl: 480, purchasePrice: 75, caseSize: 20, imageUrl: "/grinbit-stb.jpg" },
-  { name: "Гаррет Грейпфрут (ст/б)", category: Category.BEER, volumeMl: 400, purchasePrice: 87, caseSize: 20 },
+  { name: "Гаррет Грейпфрут (ст/б)", category: Category.BEER, volumeMl: 400, purchasePrice: 87, caseSize: 20, imageUrl: "/garret-greypfrut-stb.jpg" },
   { name: "Брамма (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 70, caseSize: 20, imageUrl: "/bramma-stb.jpg" },
   { name: "Бочкарев Холод и Солод светлое (ст/б)", category: Category.BEER, volumeMl: 430, purchasePrice: 69, caseSize: 20, imageUrl: "/bochkarev-holod-i-solod-stb.jpg" },
   { name: "Бад (ст/б)", category: Category.BEER, volumeMl: 440, purchasePrice: 100, caseSize: 20, imageUrl: "/bad-stb.jpg" },
@@ -126,9 +126,9 @@ export const seedProducts: SeedProduct[] = [
   { name: "Вода \"Сестрица\" природная негаз. 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 35, caseSize: 6, imageUrl: "/sestritsa-negaz-15l.jpg" },
   { name: "Вода \"Сестрица\" б/г 0.5л", category: Category.OTHER, volumeMl: 500, purchasePrice: 25, caseSize: 12, imageUrl: "/sestritsa-bg-05l.jpg" },
   { name: "Сок \"Джу100\" Яблочно-грушевый 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 54, caseSize: 12, imageUrl: "/dju100-yabloko-grusha.jpg" },
-  { name: "Напиток \"Ярмарка\" Лимонад (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6 },
+  { name: "Напиток \"Ярмарка\" Лимонад (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, imageUrl: "/yarmarka-limonad.jpg" },
   { name: "Напиток \"Ярмарка\" Тархун (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, imageUrl: "/yarmarka-tarhun.jpg" },
-  { name: "Напиток \"Ярмарка\" Мохито (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6 },
+  { name: "Напиток \"Ярмарка\" Мохито (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, imageUrl: "/yarmarka-mohito.jpg" },
   { name: "Напиток \"Ярмарка\" Клубника (ПЭТ) 1.5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, imageUrl: "/yarmarka-klubnika.jpg" },
   { name: "Напиток \"Натахтари\" Тархун (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20, imageUrl: "/natahtari-tarhun.jpg" },
   { name: "Напиток \"Натахтари\" Груша (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20, imageUrl: "/natahtari-grusha.jpg" },
@@ -165,8 +165,8 @@ export const seedProducts: SeedProduct[] = [
   { name: "Горошек \"Фрау Марта\" 310гр (ж/б)", category: Category.CANNED, volumeMl: null, purchasePrice: 68, caseSize: 15, imageUrl: "/frau-marta-goroshek.jpg" },
 
   // Бакалея
-  { name: "Гречка 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 500, caseSize: 1, markup: 100 },
-  { name: "Рис круглозерный 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 585, caseSize: 1, markup: 100 },
-  { name: "Рис пропаренный 3кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 365, caseSize: 1, markup: 40 },
+  { name: "Гречка 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 500, caseSize: 1, markup: 100, imageUrl: "/grechka-10kg.jpg" },
+  { name: "Рис круглозерный 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 585, caseSize: 1, markup: 100, imageUrl: "/ris-kruglozerniy-10kg.jpg" },
+  { name: "Рис пропаренный 3кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 365, caseSize: 1, markup: 40, imageUrl: "/ris-proparenniy-3kg.jpg" },
   { name: "Масло \"Злато\" 0,8л", category: Category.GROCERY, volumeMl: 800, purchasePrice: 125, caseSize: 15, markup: 20 },
 ];
