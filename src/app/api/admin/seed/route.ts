@@ -20,7 +20,7 @@ export async function POST() {
       volumeMl: p.volumeMl,
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
-      sellPrice: p.purchasePrice + getMarkup(p.category),
+      sellPrice: p.purchasePrice + (p.markup ?? getMarkup(p.category)),
       // imageUrl обновляется, только если задан в seedProducts — иначе не трогаем
       // то, что уже вручную выставлено в базе через админку.
       ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}),

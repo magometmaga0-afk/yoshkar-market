@@ -14,6 +14,10 @@ export type SeedProduct = {
   purchasePrice: number;
   caseSize: number;
   imageUrl?: string;
+  /** Наценка для конкретного товара, если она отличается от стандартной
+   * для его категории (см. getMarkup) — например, когда поставщик даёт
+   * разную закупочную цену на похожие товары одной категории. */
+  markup?: number;
 };
 
 // Наименования, закупочные цены и размер упаковки — из прайс-листа поставщика (2026-07-03).
@@ -108,7 +112,8 @@ export const seedProducts: SeedProduct[] = [
   { name: "Добрый Апельсин/Фанта 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 75, caseSize: 12, imageUrl: "/dobriy-fanta-pet.jpg" },
   { name: "Добрый Фанта (ПЭТ)", category: Category.OTHER, volumeMl: 500, purchasePrice: 54, caseSize: 24, imageUrl: "/dobriy-fanta-pet.jpg" },
   { name: "Фанта (ж/б)", category: Category.OTHER, volumeMl: 330, purchasePrice: 55, caseSize: 12, imageUrl: "/fanta-jb.jpg" },
-  { name: "Кока-Кола классическая 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 59, caseSize: 9, imageUrl: "/koka-kola-1l.jpg" },
+  { name: "Кока-Кола классическая 1л", category: Category.OTHER, 
+    volumeMl: 1000, purchasePrice: 59, caseSize: 9, imageUrl: "/koka-kola-1l.jpg" },
   { name: "Кока-Кола классическая 2л", category: Category.OTHER, volumeMl: 2000, purchasePrice: 80, caseSize: 6, imageUrl: "/koka-kola-2l.jpg" },
   { name: "Кола (Иран, ст/б)", category: Category.OTHER, volumeMl: 330, purchasePrice: 68, caseSize: 15, imageUrl: "/kola-iran-stb.jpg" },
   { name: "Пепси 2л", category: Category.OTHER, volumeMl: 2000, purchasePrice: 85, caseSize: 6, imageUrl: "/pepsi-2l.jpg" },
@@ -156,4 +161,10 @@ export const seedProducts: SeedProduct[] = [
   { name: "Скумбрия в масле (Сохраним традиции) 240гр", category: Category.CANNED, volumeMl: null, purchasePrice: 165, caseSize: 24, imageUrl: "/skumbriya-v-masle.jpg" },
   { name: "Сгущенка \"МариМолоко\" 250гр", category: Category.CANNED, volumeMl: null, purchasePrice: 52, caseSize: 24, imageUrl: "/sgushenka-marimoloko.jpg" },
   { name: "Горошек \"Фрау Марта\" 310гр (ж/б)", category: Category.CANNED, volumeMl: null, purchasePrice: 68, caseSize: 15, imageUrl: "/frau-marta-goroshek.jpg" },
+
+  // Бакалея
+  { name: "Гречка 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 500, caseSize: 1, markup: 100 },
+  { name: "Рис круглозерный 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 585, caseSize: 1, markup: 100 },
+  { name: "Рис пропаренный 3кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 365, caseSize: 1, markup: 40 },
+  { name: "Масло \"Злато\" 0,8л", category: Category.GROCERY, volumeMl: 800, purchasePrice: 125, caseSize: 15, markup: 20 },
 ];

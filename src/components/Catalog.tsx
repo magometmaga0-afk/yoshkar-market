@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import type { ProductDTO } from "@/lib/types";
 
 const TABS: {
-  key: "ALL" | "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED";
+  key: "ALL" | "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED" | "GROCERY";
   label: string;
   emoji: string;
 }[] = [
@@ -16,11 +16,12 @@ const TABS: {
   { key: "SNACKS", label: "Снеки", emoji: "🍫" },
   { key: "COFFEE_TEA", label: "Чай и кофе", emoji: "☕" },
   { key: "CANNED", label: "Консервы", emoji: "🥫" },
+  { key: "GROCERY", label: "Бакалея", emoji: "🌾" },
 ];
 
 export default function Catalog({ products }: { products: ProductDTO[] }) {
   const [tab, setTab] = useState<
-    "ALL" | "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED"
+    "ALL" | "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED" | "GROCERY"
   >("ALL");
 
   const filtered = useMemo(

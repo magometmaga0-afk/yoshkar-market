@@ -42,6 +42,7 @@ export default function NewProductForm() {
             <option value="SNACKS">Снек</option>
             <option value="COFFEE_TEA">Чай/кофе</option>
             <option value="CANNED">Консервы</option>
+            <option value="GROCERY">Бакалея</option>
           </select>
         </label>
         <label className="block">

@@ -17,6 +17,7 @@ enum Category {
   SNACKS
   COFFEE_TEA
   CANNED
+  GROCERY
 }
 
 enum PaymentMethod {

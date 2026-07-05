@@ -6,7 +6,7 @@ export type CartItem = {
   name: string;
   sellPrice: number;
   volumeMl: number | null;
-  category: "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED";
+  category: "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED" | "GROCERY";
   caseSize: number;
   imageUrl: string | null;
   quantity: number;

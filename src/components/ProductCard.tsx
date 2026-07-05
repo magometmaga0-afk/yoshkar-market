@@ -3,15 +3,7 @@
 import Link from "next/link";
 import { useCartStore } from "@/store/cart";
 import type { ProductDTO } from "@/lib/types";
-
-const CATEGORY_TILE: Record<ProductDTO["category"], { emoji: string; gradient: string }> = {
-  BEER: { emoji: "🍺", gradient: "from-amber-200 to-amber-100" },
-  ENERGY: { emoji: "⚡", gradient: "from-violet-200 to-sky-100" },
-  OTHER: { emoji: "🥤", gradient: "from-sky-200 to-cyan-100" },
-  SNACKS: { emoji: "🍫", gradient: "from-orange-200 to-rose-100" },
-  COFFEE_TEA: { emoji: "☕", gradient: "from-stone-200 to-amber-100" },
-  CANNED: { emoji: "🥫", gradient: "from-emerald-200 to-lime-100" },
-};
+import { CATEGORY_TILE } from "@/lib/productCategory";
 
 export default function ProductCard({ product }: { product: ProductDTO }) {
   const quantity = useCartStore(

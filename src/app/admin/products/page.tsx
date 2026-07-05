@@ -12,6 +12,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   SNACKS: "Снек",
   COFFEE_TEA: "Чай/кофе",
   CANNED: "Консервы",
+  GROCERY: "Бакалея",
 };
 
 export default async function AdminProductsPage() {
