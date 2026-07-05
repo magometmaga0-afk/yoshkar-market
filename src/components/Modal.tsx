@@ -83,7 +83,9 @@ export default function Modal({
           open ? "translate-y-0" : "translate-y-full sm:translate-y-6"
         } ${closing ? "pointer-events-none" : ""}`}
         style={{
-          maxHeight: "92vh",
+          // dvh (а не vh) — чтобы верх окна с крестиком не уезжал под шторку
+          // адресной строки мобильного браузера, когда та развёрнута.
+          maxHeight: "90dvh",
           transitionDuration: isDragging ? "0ms" : "200ms",
           transform: dragY && !closing ? `translateY(${dragY}px)` : undefined,
         }}
