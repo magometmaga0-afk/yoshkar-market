@@ -26,6 +26,20 @@ export default function PhoneInput() {
 
   const displayValue = national.length > 0 || focused ? formatPhone(national) : "";
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const inputType = (e.nativeEvent as InputEvent).inputType;
+    const isDelete = inputType === "deleteContentBackward" || inputType === "deleteContentForward";
+    let next = extractNational(e.target.value);
+    if (isDelete && next === national && next.length > 0) {
+      // Backspace стёр не цифру, а автоматически подставленный символ
+      // форматирования (скобку/тире) — цифр в строке не убавилось, и
+      // formatPhone тут же нарисовал бы тот же символ обратно, из-за чего
+      // поле застревало и казалось, что номер невозможно стереть.
+      next = next.slice(0, -1);
+    }
+    setNational(next);
+  }
+
   return (
     <input
       name="phone"
@@ -33,7 +47,7 @@ export default function PhoneInput() {
       required
       autoComplete="tel"
       value={displayValue}
-      onChange={(e) => setNational(extractNational(e.target.value))}
+      onChange={handleChange}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
