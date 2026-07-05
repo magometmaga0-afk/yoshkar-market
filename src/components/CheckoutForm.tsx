@@ -19,6 +19,22 @@ export default function CheckoutForm() {
   const setQuantity = useCartStore((s) => s.setQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
   const clear = useCartStore((s) => s.clear);
+  const syncImages = useCartStore((s) => s.syncImages);
+
+  useEffect(() => {
+    const ids = useCartStore.getState().items.map((i) => i.productId);
+    if (ids.length === 0) return;
+    fetch("/api/cart-sync", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ids }),
+    })
+      .then((res) => res.json())
+      .then((data) => syncImages(data.images ?? {}))
+      .catch(() => {
+        // не критично — просто останутся старые (или отсутствующие) фото до следующего захода
+      });
+  }, [syncImages]);
 
   const hasAlcohol = items.some((i) => i.category === "BEER");
   const total = items.reduce((sum, i) => sum + i.quantity * i.sellPrice, 0);

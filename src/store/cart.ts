@@ -17,6 +17,7 @@ type CartState = {
   addItem: (item: Omit<CartItem, "quantity">, qty?: number) => void;
   removeItem: (productId: string) => void;
   setQuantity: (productId: string, qty: number) => void;
+  syncImages: (images: Record<string, string | null>) => void;
   clear: () => void;
 };
 
@@ -44,6 +45,14 @@ export const useCartStore = create<CartState>()(
             qty <= 0
               ? state.items.filter((i) => i.productId !== productId)
               : state.items.map((i) => (i.productId === productId ? { ...i, quantity: qty } : i)),
+        })),
+      syncImages: (images) =>
+        set((state) => ({
+          items: state.items.map((i) =>
+            i.productId in images && images[i.productId] !== i.imageUrl
+              ? { ...i, imageUrl: images[i.productId] }
+              : i,
+          ),
         })),
       clear: () => set({ items: [] }),
     }),
