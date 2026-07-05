@@ -62,13 +62,13 @@ export default function CheckoutForm() {
                 key={item.productId}
                 className="flex items-center gap-3 border-b border-border p-3 last:border-b-0"
               >
-                <div className="min-w-0 flex-1">
+                <Link href={`/product/${item.productId}`} className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium">{item.name}</p>
                   <p className="text-xs text-foreground/50">
                     {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
                     {item.caseSize > 1 ? ` · уп. ${item.caseSize} шт` : ""}
                   </p>
-                </div>
+                </Link>
                 <div className="flex shrink-0 items-center gap-2 rounded-full bg-background p-1">
                   <button
                     type="button"
