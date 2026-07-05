@@ -62,6 +62,13 @@ export default function AddressAutocomplete() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onFocus={() => suggestions.length > 0 && setOpen(true)}
+        onKeyDown={(e) => {
+          if (e.key === "Escape" && open) {
+            e.preventDefault();
+            e.stopPropagation();
+            setOpen(false);
+          }
+        }}
         className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
         placeholder="Улица и дом"
       />

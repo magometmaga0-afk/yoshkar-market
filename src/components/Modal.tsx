@@ -3,7 +3,13 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function ProductModal({ children }: { children: React.ReactNode }) {
+export default function Modal({
+  children,
+  maxWidthClassName = "sm:max-w-2xl",
+}: {
+  children: React.ReactNode;
+  maxWidthClassName?: string;
+}) {
   const router = useRouter();
 
   useEffect(() => {
@@ -16,7 +22,9 @@ export default function ProductModal({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") router.back();
+      // defaultPrevented даёт вложенным элементам (например, выпадающему списку
+      // подсказок адреса) шанс самим обработать Escape и не закрывать модалку целиком.
+      if (e.key === "Escape" && !e.defaultPrevented) router.back();
     }
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
@@ -29,7 +37,7 @@ export default function ProductModal({ children }: { children: React.ReactNode }
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full animate-slide-up overflow-hidden rounded-t-3xl bg-background shadow-xl sm:max-w-2xl sm:rounded-2xl"
+        className={`relative w-full animate-slide-up overflow-hidden rounded-t-3xl bg-background shadow-xl sm:rounded-2xl ${maxWidthClassName}`}
         style={{ maxHeight: "92vh" }}
       >
         <button

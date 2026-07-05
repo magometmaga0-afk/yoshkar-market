@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getProductDetail } from "@/lib/productDetail";
 import ProductDetailBody from "@/components/ProductDetailBody";
-import ProductModal from "@/components/ProductModal";
+import Modal from "@/components/Modal";
 
 export default async function ProductModalPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -9,8 +9,8 @@ export default async function ProductModalPage({ params }: { params: Promise<{ i
   if (!data) notFound();
 
   return (
-    <ProductModal>
+    <Modal>
       <ProductDetailBody product={data.product} related={data.related} />
-    </ProductModal>
+    </Modal>
   );
 }
