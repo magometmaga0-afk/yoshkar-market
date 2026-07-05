@@ -71,7 +71,7 @@ export default function Modal({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-sm transition-opacity sm:items-center sm:p-4 ${
+      className={`fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-sm transition-opacity sm:items-stretch sm:justify-end sm:p-4 ${
         open ? "opacity-100 duration-200" : "opacity-0 duration-150"
       }`}
       style={{ transitionDuration: isDragging ? "0ms" : undefined }}
@@ -79,14 +79,11 @@ export default function Modal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`relative flex w-full flex-col overflow-hidden rounded-t-3xl bg-background shadow-xl transition-transform ease-out sm:rounded-2xl ${maxWidthClassName} ${
-          open ? "translate-y-0" : "translate-y-full sm:translate-y-6"
+        className={`relative flex w-full max-h-[90dvh] flex-col overflow-hidden rounded-t-3xl border border-border/60 bg-card shadow-2xl transition-transform ease-out sm:max-h-none sm:rounded-3xl sm:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)] ${maxWidthClassName} ${
+          open ? "translate-y-0 sm:translate-x-0" : "translate-y-full sm:translate-y-0 sm:translate-x-10"
         } ${closing ? "pointer-events-none" : ""}`}
         style={{
-          // dvh (а не vh) — чтобы верх окна с крестиком не уезжал под шторку
-          // адресной строки мобильного браузера, когда та развёрнута.
-          maxHeight: "90dvh",
-          transitionDuration: isDragging ? "0ms" : "200ms",
+          transitionDuration: isDragging ? "0ms" : "220ms",
           transform: dragY && !closing ? `translateY(${dragY}px)` : undefined,
         }}
       >
@@ -102,14 +99,14 @@ export default function Modal({
         <button
           onClick={close}
           aria-label="Закрыть"
-          className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-lg leading-none shadow-md backdrop-blur transition active:scale-90"
+          className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-foreground/[0.04] text-lg leading-none text-foreground/70 transition hover:bg-foreground/[0.08] active:scale-90 sm:right-5 sm:top-5"
         >
           ✕
         </button>
 
         <div
-          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pt-1 lg:px-6"
-          style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pt-1 sm:px-7 sm:pt-2 lg:px-9"
+          style={{ paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
         >
           {children}
         </div>
