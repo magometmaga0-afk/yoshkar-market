@@ -45,6 +45,7 @@ export default function ProductDetailActions({ product }: { product: ProductDTO 
                   volumeMl: product.volumeMl,
                   category: product.category,
                   caseSize: product.caseSize,
+                  imageUrl: product.imageUrl,
                 },
                 product.caseSize,
               );

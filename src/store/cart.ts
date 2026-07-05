@@ -8,6 +8,7 @@ export type CartItem = {
   volumeMl: number | null;
   category: "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED";
   caseSize: number;
+  imageUrl: string | null;
   quantity: number;
 };
 
@@ -49,14 +50,14 @@ export const useCartStore = create<CartState>()(
     {
       name: "yoshkar-shop-cart",
       storage: createJSONStorage(() => localStorage),
-      version: 2,
+      version: 3,
       migrate: (persistedState) => {
         const state = persistedState as CartState;
         return {
           ...state,
-          items: (state?.items ?? []).filter(
-            (i) => typeof i.caseSize === "number" && i.caseSize > 0,
-          ),
+          items: (state?.items ?? [])
+            .filter((i) => typeof i.caseSize === "number" && i.caseSize > 0)
+            .map((i) => ({ ...i, imageUrl: i.imageUrl ?? null })),
         };
       },
     },

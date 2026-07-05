@@ -9,6 +9,7 @@ import AddressAutocomplete from "@/components/AddressAutocomplete";
 import PhoneInput from "@/components/PhoneInput";
 import Spinner from "@/components/Spinner";
 import { PICKUP_ADDRESS, MIN_ORDER_AMOUNT, WORKING_HOURS, isWithinWorkingHours } from "@/lib/constants";
+import { CATEGORY_TILE } from "@/lib/productCategory";
 
 const initialState: OrderFormState = {};
 
@@ -62,12 +63,32 @@ export default function CheckoutForm() {
                 key={item.productId}
                 className="flex items-center gap-3 border-b border-border p-3 last:border-b-0"
               >
-                <Link href={`/product/${item.productId}`} className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium">{item.name}</p>
-                  <p className="text-xs text-foreground/50">
-                    {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
-                    {item.caseSize > 1 ? ` · уп. ${item.caseSize} шт` : ""}
-                  </p>
+                <Link href={`/product/${item.productId}`} className="flex min-w-0 flex-1 items-center gap-3">
+                  <div
+                    className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-border ${
+                      item.imageUrl ? "bg-white" : `bg-gradient-to-br ${CATEGORY_TILE[item.category].gradient}`
+                    }`}
+                  >
+                    {item.imageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={item.imageUrl}
+                        alt={item.name}
+                        className="absolute inset-0 h-full w-full object-contain p-1.5"
+                      />
+                    ) : (
+                      <span className="absolute inset-0 flex items-center justify-center text-2xl">
+                        {CATEGORY_TILE[item.category].emoji}
+                      </span>
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium">{item.name}</p>
+                    <p className="text-xs text-foreground/50">
+                      {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
+                      {item.caseSize > 1 ? ` · уп. ${item.caseSize} шт` : ""}
+                    </p>
+                  </div>
                 </Link>
                 <div className="flex shrink-0 items-center gap-2 rounded-full bg-background p-1">
                   <button

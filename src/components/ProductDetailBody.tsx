@@ -1,7 +1,7 @@
 import ProductCard from "@/components/ProductCard";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import type { ProductDTO } from "@/lib/types";
-import { CATEGORY_LABEL, CATEGORY_TILE } from "@/lib/productDetail";
+import { CATEGORY_LABEL, CATEGORY_TILE } from "@/lib/productCategory";
 
 export default function ProductDetailBody({
   product,
