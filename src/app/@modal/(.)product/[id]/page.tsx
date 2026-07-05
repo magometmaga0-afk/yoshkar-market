@@ -9,7 +9,7 @@ export default async function ProductModalPage({ params }: { params: Promise<{ i
   if (!data) notFound();
 
   return (
-    <Modal>
+    <Modal activePathPrefix="/product">
       <ProductDetailBody product={data.product} related={data.related} />
     </Modal>
   );

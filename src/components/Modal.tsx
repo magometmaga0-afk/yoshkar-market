@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const DISMISS_THRESHOLD = 110;
 const CLOSE_ANIMATION_MS = 200;
@@ -9,11 +9,19 @@ const CLOSE_ANIMATION_MS = 200;
 export default function Modal({
   children,
   maxWidthClassName = "sm:max-w-2xl",
+  activePathPrefix,
 }: {
   children: React.ReactNode;
   maxWidthClassName?: string;
+  /** Путь, за который отвечает эта модалка (например "/checkout"). Если после
+   * программной навигации (напр. редиректа на подтверждение заказа) текущий
+   * путь перестаёт начинаться с этого префикса, значит слот @modal остался
+   * смонтирован поверх уже другой страницы — прячем модалку сразу, без анимации. */
+  activePathPrefix: string;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
+  const orphaned = !pathname.startsWith(activePathPrefix);
   const [mounted, setMounted] = useState(false);
   const [closing, setClosing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -68,6 +76,8 @@ export default function Modal({
   }
 
   const open = mounted && !closing;
+
+  if (orphaned) return null;
 
   return (
     <div
