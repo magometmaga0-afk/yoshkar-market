@@ -1,7 +1,7 @@
 export type ProductDTO = {
   id: string;
   name: string;
-  category: "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED" | "GROCERY";
+  category: "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED" | "GROCERY" | "PET_SUPPLIES";
   volumeMl: number | null;
   sellPrice: number;
   caseSize: number;

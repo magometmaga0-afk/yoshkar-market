@@ -81,6 +81,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Велкопоповицкий Козел Светлое (ж/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 88, caseSize: 24, imageUrl: "/kozel-svetloe-jb.jpg" },
   { name: "Бад (ж/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 100, caseSize: 24, imageUrl: "/bad-jb.jpg" },
   { name: "Ловенбрау (ж/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 82, caseSize: 24, imageUrl: "/lowenbrau-jb.jpg" },
+  { name: "Эсса Ананас Грейпфрут (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 79, caseSize: 20, markup: 0 },
 
   // Энергетики
   { name: "Adrenaline Rush без сахара (белый)", category: Category.ENERGY, volumeMl: 449, purchasePrice: 98, caseSize: 12, imageUrl: "/adrenaline-rush-zero-white.jpg" },
@@ -108,6 +109,8 @@ export const seedProducts: SeedProduct[] = [
   { name: "Volt Гуава (ж/б)", category: Category.ENERGY, volumeMl: 450, purchasePrice: 74, caseSize: 24, imageUrl: "/volt-guava-jb.jpg" },
   { name: "Горилла (ж/б) Личи и груша", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, markup: 20, imageUrl: "/gorilla-lychee-pear-jb.jpg" },
   { name: "Флэш (ж/б) Ультра", category: Category.ENERGY, volumeMl: 450, purchasePrice: 63, caseSize: 24, markup: 10, imageUrl: "/flesh-ultra-jb.jpg" },
+  { name: "Берн Арбуз б/сах (ж/б)", category: Category.ENERGY, volumeMl: 500, purchasePrice: 88, caseSize: 12, markup: 0 },
+  { name: "Black Monster Ультра Вайт", category: Category.ENERGY, volumeMl: 500, purchasePrice: 160, caseSize: 12, markup: 0 },
 
   // Напитки
   { name: "Добрый Pulpy Апельсин 0,45л", category: Category.OTHER, volumeMl: 450, purchasePrice: 57, caseSize: 12, markup: 10, imageUrl: "/dobriy-pulpy-apelsin.jpg" },
@@ -140,6 +143,14 @@ export const seedProducts: SeedProduct[] = [
   { name: "Добрый Кола (ж/б)", category: Category.OTHER, volumeMl: 330, purchasePrice: 55, caseSize: 24, imageUrl: "/dobriy-kola-jb.jpg" },
   { name: "Кола (Иран, ж/б)", category: Category.OTHER, volumeMl: 300, purchasePrice: 57, caseSize: 24, imageUrl: "/kola-iran-jb.jpg" },
   { name: "Квас Бочковой 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 79, caseSize: 6, markup: 20, imageUrl: "/kvas-bochkovoy-15l.jpg" },
+  { name: "Галерея Источников №17 (ПЭТ)", category: Category.OTHER, volumeMl: 1500, purchasePrice: 47, caseSize: 6, markup: 0 },
+  { name: "Букет Чувашии со вкусом лимона 0,5л", category: Category.OTHER, volumeMl: 500, purchasePrice: 37, caseSize: 12, markup: 0 },
+  { name: "Букет Чувашии с ароматом лимона 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 85, caseSize: 6, markup: 0 },
+  { name: "Раифский источник без газа 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, markup: 0 },
+  { name: "Раифский источник газ. 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, markup: 0 },
+  { name: "Квас Домашний 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 98, caseSize: 6, markup: 0 },
+  { name: "Спрайт (ж/б, Иран)", category: Category.OTHER, volumeMl: 300, purchasePrice: 55, caseSize: 24, markup: 0 },
+  { name: "Морс \"Калинов\" Клюква", category: Category.OTHER, volumeMl: 1700, purchasePrice: 98, caseSize: 6, markup: 0 },
 
   // Снеки и сладости
   { name: "Чоко Пай 6шт", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16, imageUrl: "/choco-pie-6pack.jpg" },
@@ -151,6 +162,14 @@ export const seedProducts: SeedProduct[] = [
   { name: "Халва подсолнечная 5кг", category: Category.SNACKS, volumeMl: null, purchasePrice: 248, caseSize: 1, imageUrl: "/halva.jpg" },
   { name: "Шоколад \"Альпен Гольд\" с фундуком и изюмом 85гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 79, caseSize: 21, imageUrl: "/alpen-gold-fundu-izum.jpg" },
   { name: "Шоколад \"Альпен Гольд\" с клубнично-йогуртовой начинкой 85гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 79, caseSize: 21, imageUrl: "/alpen-gold-klubnika-yogurt.jpg" },
+  { name: "Чипсы \"Лейс\" 70гр бекон", category: Category.SNACKS, volumeMl: null, purchasePrice: 82, caseSize: 25, markup: 0 },
+  { name: "Чипсы \"Лейс\" 70гр сыр", category: Category.SNACKS, volumeMl: null, purchasePrice: 82, caseSize: 25, markup: 0 },
+  { name: "Чипсы \"Лейс\" 140гр малосольные огурцы", category: Category.SNACKS, volumeMl: null, purchasePrice: 143, caseSize: 19, markup: 0 },
+  { name: "Батончик \"Супер\" нуга и карамель 40гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 14, caseSize: 18, markup: 0 },
+  { name: "Эмемденс шоколад 45гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 58, caseSize: 32, markup: 0 },
+  { name: "\"Веселики\" кукурузные палочки 0,5кг", category: Category.SNACKS, volumeMl: null, purchasePrice: 135, caseSize: 1, markup: 0 },
+  { name: "Сникерс 50гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 48, markup: 0 },
+  { name: "Марс Макс 81гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 67, caseSize: 24, markup: 0 },
 
   // Чай и кофе
   { name: "Кофе Жокей \"Голд\" 75гр м/у", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 168, caseSize: 12 },
@@ -160,6 +179,10 @@ export const seedProducts: SeedProduct[] = [
   { name: "Тесс \"Плеже\" 25пак черн. с доб.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 60, caseSize: 10, imageUrl: "/tess-plaisir.jpg" },
   { name: "Принцесса \"Нури\" Высокогорный 100пак. черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 148, caseSize: 18, imageUrl: "/princessa-nuri-vysokogorny.jpg" },
   { name: "Кофе \"Нескафе 3в1\" Классик 14.5гр", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 290, caseSize: 20, imageUrl: "/nescafe-3v1-classic.jpg" },
+  { name: "Кофе \"Якобс Монарх Интенс\" 47,5гр (ст/б)", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 185, caseSize: 12, markup: 0 },
+  { name: "Кофе \"Черная карта голд\" 75гр", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 185, caseSize: 12, markup: 0 },
+  { name: "Кофе \"Суаре\" \"Кофейня на паяхъ\" 75гр", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 228, caseSize: 12, markup: 0 },
+  { name: "Кофе Жокей \"Триумф\" 75гр раст.субл. м/у", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 168, caseSize: 12, markup: 0 },
 
   // Консервы
   { name: "Сардина в т/с с овощ. гарн. 240гр ГОСТ (Сохраним Традиции)", category: Category.CANNED, volumeMl: null, purchasePrice: 110, caseSize: 24, imageUrl: "/sardina-v-tomate.jpg" },
@@ -167,10 +190,27 @@ export const seedProducts: SeedProduct[] = [
   { name: "Скумбрия в масле (Сохраним традиции) 240гр", category: Category.CANNED, volumeMl: null, purchasePrice: 165, caseSize: 24, imageUrl: "/skumbriya-v-masle.jpg" },
   { name: "Сгущенка \"МариМолоко\" 250гр", category: Category.CANNED, volumeMl: null, purchasePrice: 52, caseSize: 24, imageUrl: "/sgushenka-marimoloko.jpg" },
   { name: "Горошек \"Фрау Марта\" 310гр (ж/б)", category: Category.CANNED, volumeMl: null, purchasePrice: 68, caseSize: 15, imageUrl: "/frau-marta-goroshek.jpg" },
+  { name: "Сгущенка \"МариМолоко\" 350гр ПЭТ", category: Category.CANNED, volumeMl: null, purchasePrice: 56, caseSize: 24, markup: 0 },
+  { name: "Сгущенка \"МариМолоко\" 450гр ПЭТ", category: Category.CANNED, volumeMl: null, purchasePrice: 71, caseSize: 30, markup: 0 },
+  { name: "Хрен \"Махеевъ\" туба столовый 100гр", category: Category.CANNED, volumeMl: null, purchasePrice: 60, caseSize: 15, markup: 0 },
 
   // Бакалея
   { name: "Гречка 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 500, caseSize: 1, markup: 100, imageUrl: "/grechka-10kg.jpg" },
   { name: "Рис круглозерный 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 585, caseSize: 1, markup: 100, imageUrl: "/ris-kruglozerniy-10kg.jpg" },
   { name: "Рис пропаренный 3кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 365, caseSize: 1, markup: 40, imageUrl: "/ris-proparenniy-3kg.jpg" },
   { name: "Масло \"Злато\" 0,8л", category: Category.GROCERY, volumeMl: 800, purchasePrice: 125, caseSize: 15, markup: 20, imageUrl: "/maslo-zlato-08l.jpg" },
+  { name: "Корица молотая 10гр", category: Category.GROCERY, volumeMl: null, purchasePrice: 12, caseSize: 150, markup: 0 },
+  { name: "Приправа \"Магия Востока\" овощная универсальная 75гр", category: Category.GROCERY, volumeMl: null, purchasePrice: 23, caseSize: 20, markup: 0 },
+  { name: "Бумага туалетная \"Челны\"", category: Category.GROCERY, volumeMl: null, purchasePrice: 23.5, caseSize: 48, markup: 0 },
+  { name: "Макаронные изделия \"Ситно\" рожки 5кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 268, caseSize: 1, markup: 0 },
+  { name: "Соль \"Ипецкая\" 30кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 465, caseSize: 1, markup: 0 },
+  { name: "Горох колотый 25кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 900, caseSize: 1, markup: 0 },
+  { name: "Лапша \"Биг Ланч\" курица 90гр", category: Category.GROCERY, volumeMl: null, purchasePrice: 49, caseSize: 24, markup: 0 },
+  { name: "Сахар кусковой 500гр", category: Category.GROCERY, volumeMl: null, purchasePrice: 54, caseSize: 40, markup: 0 },
+  { name: "Сахар 250гр", category: Category.GROCERY, volumeMl: null, purchasePrice: 41, caseSize: 40, markup: 0 },
+  { name: "Бульон \"Роллтон\" куриный домашний 100гр", category: Category.GROCERY, volumeMl: null, purchasePrice: 28, caseSize: 24, markup: 0 },
+
+  // Зоотовары
+  { name: "Сухой корм \"Китикет\" 15кг", category: Category.PET_SUPPLIES, volumeMl: null, purchasePrice: 3450, caseSize: 1, markup: 0 },
+  { name: "Корм для кошек \"Мурчик\" с индейкой 75гр", category: Category.PET_SUPPLIES, volumeMl: null, purchasePrice: 17.5, caseSize: 35, markup: 0 },
 ];
