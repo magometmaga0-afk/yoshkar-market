@@ -106,11 +106,11 @@ export const seedProducts: SeedProduct[] = [
   { name: "Lit Energy Citrus Punch", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-citrus-punch.jpg" },
   { name: "Lit Energy Strawberry Bubblegum", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-strawberry-bubblegum.jpg" },
   { name: "Volt Гуава (ж/б)", category: Category.ENERGY, volumeMl: 450, purchasePrice: 74, caseSize: 24, imageUrl: "/volt-guava-jb.jpg" },
-  { name: "Горилла (ж/б) Личи и груша", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, markup: 20 },
-  { name: "Флэш (ж/б) Ультра", category: Category.ENERGY, volumeMl: 450, purchasePrice: 63, caseSize: 24, markup: 10 },
+  { name: "Горилла (ж/б) Личи и груша", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, markup: 20, imageUrl: "/gorilla-lychee-pear-jb.jpg" },
+  { name: "Флэш (ж/б) Ультра", category: Category.ENERGY, volumeMl: 450, purchasePrice: 63, caseSize: 24, markup: 10, imageUrl: "/flesh-ultra-jb.jpg" },
 
   // Напитки
-  { name: "Паппи Апельсин 0,45л", category: Category.OTHER, volumeMl: 450, purchasePrice: 57, caseSize: 12, markup: 10 },
+  { name: "Добрый Pulpy Апельсин 0,45л", category: Category.OTHER, volumeMl: 450, purchasePrice: 57, caseSize: 12, markup: 10, imageUrl: "/dobriy-pulpy-apelsin.jpg" },
   { name: "Мохито клубничный (ж/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 61, caseSize: 24, imageUrl: "/mohito-klubnichniy-jb.jpg" },
   { name: "Добрый Апельсин/Фанта 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 75, caseSize: 12, imageUrl: "/dobriy-fanta-pet.jpg" },
   { name: "Добрый Фанта (ПЭТ)", category: Category.OTHER, volumeMl: 500, purchasePrice: 54, caseSize: 24, imageUrl: "/dobriy-fanta-pet.jpg" },
@@ -139,7 +139,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Напиток \"Натахтари\" Фейхоа (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20, imageUrl: "/natahtari-feyhoa.jpg" },
   { name: "Добрый Кола (ж/б)", category: Category.OTHER, volumeMl: 330, purchasePrice: 55, caseSize: 24, imageUrl: "/dobriy-kola-jb.jpg" },
   { name: "Кола (Иран, ж/б)", category: Category.OTHER, volumeMl: 300, purchasePrice: 57, caseSize: 24, imageUrl: "/kola-iran-jb.jpg" },
-  { name: "Квас Бочковой 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 79, caseSize: 6, markup: 20 },
+  { name: "Квас Бочковой 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 79, caseSize: 6, markup: 20, imageUrl: "/kvas-bochkovoy-15l.jpg" },
 
   // Снеки и сладости
   { name: "Чоко Пай 6шт", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16, imageUrl: "/choco-pie-6pack.jpg" },
@@ -156,7 +156,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Кофе Жокей \"Голд\" 75гр м/у", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 168, caseSize: 12 },
   { name: "Кофе Жокей \"Импер\" 75гр раст.субл. м/у", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 168, caseSize: 12, imageUrl: "/kofe-zhokey-imper.jpg" },
   { name: "Гринфилд \"Голден Цейлон\" 25пак черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 72, caseSize: 10, imageUrl: "/greenfield-golden-ceylon.jpg" },
-  { name: "Гринфилд \"Грин Мелисса\" 100пак", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 258, caseSize: 9, markup: 20 },
+  { name: "Гринфилд \"Грин Мелисса\" 100пак", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 258, caseSize: 9, markup: 20, imageUrl: "/greenfield-green-melissa.jpg" },
   { name: "Тесс \"Плеже\" 25пак черн. с доб.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 60, caseSize: 10, imageUrl: "/tess-plaisir.jpg" },
   { name: "Принцесса \"Нури\" Высокогорный 100пак. черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 148, caseSize: 18, imageUrl: "/princessa-nuri-vysokogorny.jpg" },
   { name: "Кофе \"Нескафе 3в1\" Классик 14.5гр", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 290, caseSize: 20, imageUrl: "/nescafe-3v1-classic.jpg" },
@@ -172,5 +172,5 @@ export const seedProducts: SeedProduct[] = [
   { name: "Гречка 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 500, caseSize: 1, markup: 100, imageUrl: "/grechka-10kg.jpg" },
   { name: "Рис круглозерный 10кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 585, caseSize: 1, markup: 100, imageUrl: "/ris-kruglozerniy-10kg.jpg" },
   { name: "Рис пропаренный 3кг", category: Category.GROCERY, volumeMl: null, purchasePrice: 365, caseSize: 1, markup: 40, imageUrl: "/ris-proparenniy-3kg.jpg" },
-  { name: "Масло \"Злато\" 0,8л", category: Category.GROCERY, volumeMl: 800, purchasePrice: 125, caseSize: 15, markup: 20 },
+  { name: "Масло \"Злато\" 0,8л", category: Category.GROCERY, volumeMl: 800, purchasePrice: 125, caseSize: 15, markup: 20, imageUrl: "/maslo-zlato-08l.jpg" },
 ];
