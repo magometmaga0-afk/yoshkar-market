@@ -9,6 +9,7 @@ export const CATEGORY_LABEL: Record<ProductDTO["category"], string> = {
   CANNED: "Консервы",
   GROCERY: "Бакалея",
   PET_SUPPLIES: "Зоотовары",
+  PRODUCE: "Фрукты и овощи",
 };
 
 export const CATEGORY_TILE: Record<ProductDTO["category"], { emoji: string; gradient: string }> = {
@@ -20,4 +21,5 @@ export const CATEGORY_TILE: Record<ProductDTO["category"], { emoji: string; grad
   CANNED: { emoji: "🥫", gradient: "from-emerald-200 to-lime-100" },
   GROCERY: { emoji: "🌾", gradient: "from-yellow-200 to-lime-100" },
   PET_SUPPLIES: { emoji: "🐾", gradient: "from-orange-100 to-amber-50" },
+  PRODUCE: { emoji: "🍑", gradient: "from-red-200 to-pink-100" },
 };

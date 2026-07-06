@@ -14,6 +14,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   CANNED: "Консервы",
   GROCERY: "Бакалея",
   PET_SUPPLIES: "Зоотовары",
+  PRODUCE: "Фрукты и овощи",
 };
 
 export default async function AdminProductsPage() {

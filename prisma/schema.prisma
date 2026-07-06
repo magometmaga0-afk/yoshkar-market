@@ -19,6 +19,7 @@ enum Category {
   CANNED
   GROCERY
   PET_SUPPLIES
+  PRODUCE
 }
 
 enum PaymentMethod {

@@ -213,4 +213,8 @@ export const seedProducts: SeedProduct[] = [
   // Зоотовары
   { name: "Сухой корм \"Китикет\" 15кг", category: Category.PET_SUPPLIES, volumeMl: null, purchasePrice: 3600, caseSize: 1, markup: 100 },
   { name: "Корм для кошек \"Мурчик\" с индейкой 75гр", category: Category.PET_SUPPLIES, volumeMl: null, purchasePrice: 17.5, caseSize: 35, markup: 10, imageUrl: "/murchik-indeyka.jpg" },
+
+  // Фрукты и овощи
+  { name: "Черешня (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 350, caseSize: 1, markup: 49, imageUrl: "/chereshnya.jpg" },
+  { name: "Нектарины азербайджанские (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 140, caseSize: 1, markup: 39, imageUrl: "/nektariny-azerbaydzhan.jpg" },
 ];

@@ -20,7 +20,7 @@ function toDto(p: RawProduct): ProductDTO {
     category: p.category,
     volumeMl: p.volumeMl,
     sellPrice: Number(p.sellPrice),
-    caseSize: ["SNACKS", "COFFEE_TEA", "CANNED", "GROCERY", "PET_SUPPLIES"].includes(p.category) ? 1 : p.caseSize,
+    caseSize: ["SNACKS", "COFFEE_TEA", "CANNED", "GROCERY", "PET_SUPPLIES", "PRODUCE"].includes(p.category) ? 1 : p.caseSize,
     imageUrl: p.imageUrl,
     description: p.description,
     inStock: p.inStock,
