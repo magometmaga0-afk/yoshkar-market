@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import AdminNav from "@/components/AdminNav";
 import OrderStatusSelect from "@/components/OrderStatusSelect";
@@ -156,11 +157,12 @@ export default async function AdminOrdersPage() {
                       }`}
                     >
                       {hasPhoto ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <Image
                           src={item.product!.imageUrl!}
                           alt=""
-                          className="absolute inset-0 h-full w-full object-contain p-1"
+                          fill
+                          sizes="44px"
+                          className="object-contain p-1"
                         />
                       ) : tile ? (
                         <span className="absolute inset-0 flex items-center justify-center text-lg">

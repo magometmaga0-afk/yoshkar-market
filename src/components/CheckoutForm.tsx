@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { useCartStore } from "@/store/cart";
 import { createOrder, type OrderFormState } from "@/app/actions/orders";
 import AddressAutocomplete from "@/components/AddressAutocomplete";
@@ -87,11 +88,12 @@ export default function CheckoutForm() {
                     }`}
                   >
                     {item.imageUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={item.imageUrl}
                         alt={item.name}
-                        className="absolute inset-0 h-full w-full object-contain p-1.5"
+                        fill
+                        sizes="56px"
+                        className="object-contain p-1.5"
                       />
                     ) : (
                       <span className="absolute inset-0 flex items-center justify-center text-2xl">
