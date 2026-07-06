@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Йошкар Маркет",
   },
+  openGraph: {
+    title: "Йошкар Маркет — продукты и напитки с доставкой",
+    description: "Доставка продуктов, энергетиков и напитков по Йошкар-Оле",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
@@ -47,7 +52,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Header />
         {children}
-        <CartBar />
+        <CartBar /> 
         {modal}
         <AgeGate />
       </body>
