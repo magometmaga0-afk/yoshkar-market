@@ -3,6 +3,7 @@ import AdminNav from "@/components/AdminNav";
 import OrderStatusSelect from "@/components/OrderStatusSelect";
 import AutoRefresh from "@/components/AutoRefresh";
 import NewOrderAlert from "@/components/NewOrderAlert";
+import { CATEGORY_TILE } from "@/lib/productCategory";
 
 export const dynamic = "force-dynamic";
 
@@ -40,7 +41,7 @@ export default async function AdminOrdersPage() {
     prisma.order.findMany({
       orderBy: { createdAt: "desc" },
       take: 100,
-      include: { items: true },
+      include: { items: { include: { product: true } } },
     }),
     prisma.order.aggregate({
       where: { createdAt: { gte: startOfToday() }, status: { not: "CANCELLED" } },
@@ -142,12 +143,42 @@ export default async function AdminOrdersPage() {
               <p className="mb-3 text-sm text-foreground/60">📍 {order.address}</p>
             )}
 
-            <ul className="mb-3 space-y-0.5 rounded-xl bg-foreground/[0.03] px-3 py-2 text-sm text-foreground/70">
-              {order.items.map((item) => (
-                <li key={item.id}>
-                  {item.productName} × {item.quantity}
-                </li>
-              ))}
+            <ul className="mb-3 space-y-2 rounded-xl bg-foreground/[0.03] p-2">
+              {order.items.map((item) => {
+                const tile = item.product ? CATEGORY_TILE[item.product.category] : null;
+                const hasPhoto = Boolean(item.product?.imageUrl);
+                return (
+                  <li key={item.id} className="flex items-center gap-2.5">
+                    <div
+                      className={`relative h-11 w-11 shrink-0 overflow-hidden rounded-lg border border-border ${
+                        hasPhoto ? "bg-white" : tile ? `bg-gradient-to-br ${tile.gradient}` : "bg-foreground/5"
+                      }`}
+                    >
+                      {hasPhoto ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={item.product!.imageUrl!}
+                          alt=""
+                          className="absolute inset-0 h-full w-full object-contain p-1"
+                        />
+                      ) : tile ? (
+                        <span className="absolute inset-0 flex items-center justify-center text-lg">
+                          {tile.emoji}
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="min-w-0 flex-1 text-sm text-foreground/70">
+                      <p className="truncate">
+                        {item.productName} × {item.quantity}
+                      </p>
+                      <p className="text-xs text-foreground/40">{Number(item.unitSellPrice)} ₽/шт</p>
+                    </div>
+                    <span className="shrink-0 text-sm font-medium">
+                      {Number(item.unitSellPrice) * item.quantity} ₽
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3 text-sm">
