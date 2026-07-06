@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Йошкар Маркет — пиво и энергетики с доставкой",
-  description: "Доставка пива, энергетиков и напитков по Йошкар-Оле",
+  title: "Йошкар Маркет — продукты и напитки с доставкой",
+  description: "Доставка продуктов, энергетиков и напитков по Йошкар-Оле",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
