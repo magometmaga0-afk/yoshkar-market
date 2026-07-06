@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCartStore } from "@/store/cart";
 import type { ProductDTO } from "@/lib/types";
 import { CATEGORY_TILE } from "@/lib/productCategory";
+import { formatPrice } from "@/lib/formatPrice";
 
 export default function ProductCard({ product }: { product: ProductDTO }) {
   const quantity = useCartStore(
@@ -59,9 +60,9 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
       <div className="flex flex-1 flex-col gap-2 px-3 pb-3">
         <div className="mt-auto space-y-2">
           <div className="flex items-baseline justify-between">
-            <span className="text-lg font-bold">{packagePrice} ₽</span>
+            <span className="text-lg font-bold">{formatPrice(packagePrice)} ₽</span>
             {product.caseSize > 1 && (
-              <span className="text-xs text-foreground/50">{product.sellPrice} ₽/шт</span>
+              <span className="text-xs text-foreground/50">{formatPrice(product.sellPrice)} ₽/шт</span>
             )}
           </div>
 

@@ -4,6 +4,7 @@ import OrderStatusSelect from "@/components/OrderStatusSelect";
 import AutoRefresh from "@/components/AutoRefresh";
 import NewOrderAlert from "@/components/NewOrderAlert";
 import { CATEGORY_TILE } from "@/lib/productCategory";
+import { formatPrice } from "@/lib/formatPrice";
 
 export const dynamic = "force-dynamic";
 
@@ -57,9 +58,9 @@ export default async function AdminOrdersPage() {
 
   const statValues: Record<(typeof STATS)[number]["key"], string> = {
     count: String(todayAgg._count),
-    revenue: `${Number(todayAgg._sum.totalAmount ?? 0)} ₽`,
-    profitToday: `${Number(todayAgg._sum.totalProfit ?? 0)} ₽`,
-    profitTotal: `${Number(totalAgg._sum.totalProfit ?? 0)} ₽`,
+    revenue: `${formatPrice(Number(todayAgg._sum.totalAmount ?? 0))} ₽`,
+    profitToday: `${formatPrice(Number(todayAgg._sum.totalProfit ?? 0))} ₽`,
+    profitTotal: `${formatPrice(Number(totalAgg._sum.totalProfit ?? 0))} ₽`,
   };
 
   return (
@@ -171,10 +172,10 @@ export default async function AdminOrdersPage() {
                       <p className="truncate">
                         {item.productName} × {item.quantity}
                       </p>
-                      <p className="text-xs text-foreground/40">{Number(item.unitSellPrice)} ₽/шт</p>
+                      <p className="text-xs text-foreground/40">{formatPrice(Number(item.unitSellPrice))} ₽/шт</p>
                     </div>
                     <span className="shrink-0 text-sm font-medium">
-                      {Number(item.unitSellPrice) * item.quantity} ₽
+                      {formatPrice(Number(item.unitSellPrice) * item.quantity)} ₽
                     </span>
                   </li>
                 );
@@ -186,8 +187,8 @@ export default async function AdminOrdersPage() {
                 {order.paymentMethod === "CASH" ? "💵 наличные" : "💳 карта"}
               </span>
               <span>
-                Сумма: <b>{Number(order.totalAmount)} ₽</b> · Прибыль:{" "}
-                <b className="text-green-600">{Number(order.totalProfit)} ₽</b>
+                Сумма: <b>{formatPrice(Number(order.totalAmount))} ₽</b> · Прибыль:{" "}
+                <b className="text-green-600">{formatPrice(Number(order.totalProfit))} ₽</b>
               </span>
             </div>
             {order.comment && (

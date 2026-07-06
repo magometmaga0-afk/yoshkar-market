@@ -10,6 +10,7 @@ import PhoneInput from "@/components/PhoneInput";
 import Spinner from "@/components/Spinner";
 import { PICKUP_ADDRESS, MIN_ORDER_AMOUNT, WORKING_HOURS, isWithinWorkingHours } from "@/lib/constants";
 import { CATEGORY_TILE } from "@/lib/productCategory";
+import { formatPrice } from "@/lib/formatPrice";
 
 const initialState: OrderFormState = {};
 
@@ -101,7 +102,7 @@ export default function CheckoutForm() {
                   <div className="min-w-0 flex-1">
                     <p className="sm:truncate text-sm font-medium">{item.name}</p>
                     <p className="text-xs text-foreground/50">
-                      {item.sellPrice} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
+                      {formatPrice(item.sellPrice)} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
                       {item.caseSize > 1 ? ` · уп. ${item.caseSize} шт` : ""}
                     </p>
                   </div>
@@ -144,7 +145,7 @@ export default function CheckoutForm() {
             ))}
             <div className="flex items-center justify-between bg-background/60 p-3.5 font-semibold">
               <span>Итого</span>
-              <span>{total} ₽</span>
+              <span>{formatPrice(total)} ₽</span>
             </div>
           </div>
 
@@ -158,7 +159,7 @@ export default function CheckoutForm() {
           {!closed && belowMinimum && (
             <p className="rounded-2xl bg-amber-50 p-3.5 text-sm text-amber-900">
               Минимальная сумма заказа {MIN_ORDER_AMOUNT} ₽. Добавьте ещё товаров на{" "}
-              {MIN_ORDER_AMOUNT - total} ₽.
+              {formatPrice(MIN_ORDER_AMOUNT - total)} ₽.
             </p>
           )}
 
@@ -233,7 +234,7 @@ export default function CheckoutForm() {
                         name="intercom"
                         className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-[15px] outline-none focus:border-brand"
                       />
-                    </div>
+                    </div> 
                   </div>
                 </>
               )}
@@ -279,7 +280,7 @@ export default function CheckoutForm() {
           <div className="space-y-3 rounded-2xl border border-border bg-card p-5">
             <div className="flex items-center justify-between text-lg font-semibold">
               <span>Итого</span>
-              <span>{total} ₽</span>
+              <span>{formatPrice(total)} ₽</span>
             </div>
             <button
               type="submit"
@@ -311,7 +312,7 @@ export default function CheckoutForm() {
               <Spinner /> Оформляем...
             </span>
           ) : (
-            `Оформить заказ на ${total} ₽`
+            `Оформить заказ на ${formatPrice(total)} ₽`
           )}
         </button>
       </div>

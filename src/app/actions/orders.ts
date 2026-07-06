@@ -2,6 +2,8 @@
 
 import { prisma } from "@/lib/prisma";
 import { PICKUP_ADDRESS, MIN_ORDER_AMOUNT, WORKING_HOURS, isWithinWorkingHours } from "@/lib/constants";
+import { formatPrice } from "@/lib/formatPrice";
+import { makeStrictEnum } from "@prisma/client/runtime/client";
 
 export type CheckoutItem = { productId: string; quantity: number };
 
@@ -106,7 +108,7 @@ export async function createOrder(
 
   if (totalAmount < MIN_ORDER_AMOUNT) {
     return {
-      error: `Минимальная сумма заказа ${MIN_ORDER_AMOUNT} ₽. Добавьте ещё товаров на ${MIN_ORDER_AMOUNT - totalAmount} ₽.`,
+      error: `Минимальная сумма заказа ${MIN_ORDER_AMOUNT} ₽. Добавьте ещё товаров на ${formatPrice(MIN_ORDER_AMOUNT - totalAmount)} ₽.`,
     };
   }
 

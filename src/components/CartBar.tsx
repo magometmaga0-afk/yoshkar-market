@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cart";
+import { formatPrice } from "@/lib/formatPrice";
 
 export default function CartBar() {
   const pathname = usePathname();
@@ -34,7 +35,7 @@ export default function CartBar() {
           </span>
           В корзине
         </span>
-        <span className="font-semibold">{total} ₽ · Оформить →</span>
+        <span className="font-semibold">{formatPrice(total)} ₽ · Оформить →</span>
       </Link>
     </div>
   );

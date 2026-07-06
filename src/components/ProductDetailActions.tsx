@@ -2,6 +2,7 @@
 
 import { useCartStore } from "@/store/cart";
 import type { ProductDTO } from "@/lib/types";
+import { formatPrice } from "@/lib/formatPrice";
 
 export default function ProductDetailActions({ product }: { product: ProductDTO }) {
   const quantity = useCartStore(
@@ -16,9 +17,9 @@ export default function ProductDetailActions({ product }: { product: ProductDTO 
   return (
     <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3">
       <div className="min-w-0 flex-1">
-        <p className="text-lg font-bold">{packagePrice} ₽</p>
+        <p className="text-lg font-bold">{formatPrice(packagePrice)} ₽</p>
         {product.caseSize > 1 && (
-          <p className="text-xs text-foreground/50">{product.sellPrice} ₽/шт</p>
+          <p className="text-xs text-foreground/50">{formatPrice(product.sellPrice)} ₽/шт</p>
         )}
       </div>
 

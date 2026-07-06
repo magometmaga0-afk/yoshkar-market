@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { formatPrice } from "@/lib/formatPrice";
 
 export default async function OrderPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -30,14 +31,14 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
               <span className="text-foreground/70">
                 {item.productName} × {item.quantity}
               </span>
-              <span className="font-medium">{Number(item.unitSellPrice) * item.quantity} ₽</span>
+              <span className="font-medium">{formatPrice(Number(item.unitSellPrice) * item.quantity)} ₽</span>
             </div>
           ))}
         </div>
 
         <div className="flex justify-between border-t border-border bg-background/60 p-4 font-semibold">
           <span>Итого</span>
-          <span>{Number(order.totalAmount)} ₽</span>
+          <span>{formatPrice(Number(order.totalAmount))} ₽</span>
         </div>
       </div>
 
