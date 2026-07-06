@@ -3,7 +3,10 @@ import { Category } from "@/generated/prisma/client";
 import Catalog from "@/components/Catalog";
 import type { ProductDTO } from "@/lib/types";
 
-export const dynamic = "force-dynamic";
+// Каталог кэшируется на 15 секунд — под нагрузкой (много одновременных
+// заходов) отдаётся готовая страница без обращения к базе на каждый запрос.
+// Изменения в товарах (админка) появляются на сайте с задержкой до 15 сек.
+export const revalidate = 15;
 
 export default async function HomePage() {
   const products = await prisma.product.findMany({
