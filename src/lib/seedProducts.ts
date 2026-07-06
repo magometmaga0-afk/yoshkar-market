@@ -154,7 +154,7 @@ export const seedProducts: SeedProduct[] = [
 
   // Снеки и сладости
   { name: "Чоко Пай 6шт", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16, imageUrl: "/choco-pie-6pack.jpg" },
-  { name: "Вафли \"Артековские\" 5кг", category: Category.SNACKS, volumeMl: null, purchasePrice: 1285, caseSize: 1, markup: 20 },
+  { name: "Вафли \"Артековские\" 5кг", category: Category.SNACKS, volumeMl: null, purchasePrice: 1285, caseSize: 1, markup: 20, imageUrl: "/vafli-artekovskie.jpg" },
   { name: "Шоколад молочный \"Алёнка\" 75гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 78, caseSize: 16, imageUrl: "/alenka-75g.jpg" },
   { name: "Вафли \"Зебра\" 40гр с карам. арахис и изюм", category: Category.SNACKS, volumeMl: null, purchasePrice: 33, caseSize: 15, imageUrl: "/vafli-zebra.jpg" },
   { name: "Печенье Твикс 55гр", category: Category.SNACKS, volumeMl: null, purchasePrice: 46, caseSize: 40, imageUrl: "/twix.jpg" },
@@ -211,7 +211,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Бульон \"Роллтон\" куриный домашний 100гр", category: Category.GROCERY, volumeMl: null, purchasePrice: 28, caseSize: 24, markup: 10, imageUrl: "/rollton-bulon-kuriniy.jpg" },
 
   // Зоотовары
-  { name: "Сухой корм \"Китикет\" 15кг", category: Category.PET_SUPPLIES, volumeMl: null, purchasePrice: 3600, caseSize: 1, markup: 100 },
+  { name: "Сухой корм \"Китикет\" 15кг", category: Category.PET_SUPPLIES, volumeMl: null, purchasePrice: 3600, caseSize: 1, markup: 100, imageUrl: "/kitekat-15kg.jpg" },
   { name: "Корм для кошек \"Мурчик\" с индейкой 75гр", category: Category.PET_SUPPLIES, volumeMl: null, purchasePrice: 17.5, caseSize: 35, markup: 10, imageUrl: "/murchik-indeyka.jpg" },
 
   // Фрукты и овощи

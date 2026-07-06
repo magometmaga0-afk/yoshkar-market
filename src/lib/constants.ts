@@ -1,4 +1,4 @@
-export const PICKUP_ADDRESS = "уточните адрес самовывоза у продавца";
+export const PICKUP_ADDRESS = "ул. Соловьева, 45";
 
 export const MIN_ORDER_AMOUNT = 3000;
 
