@@ -3,18 +3,12 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-const STORAGE_KEY = "age_confirmed";
-
 export default function AgeGate() {
   const pathname = usePathname();
   const [status, setStatus] = useState<"checking" | "hidden" | "asking" | "denied">("checking");
 
   useEffect(() => {
-    if (localStorage.getItem(STORAGE_KEY) === "yes") {
-      setStatus("hidden");
-    } else {
-      setStatus("asking");
-    }
+    setStatus("asking");
   }, []);
 
   useEffect(() => {
@@ -31,7 +25,6 @@ export default function AgeGate() {
   if (status === "checking" || status === "hidden") return null;
 
   function confirm() {
-    localStorage.setItem(STORAGE_KEY, "yes");
     setStatus("hidden");
   }
 
