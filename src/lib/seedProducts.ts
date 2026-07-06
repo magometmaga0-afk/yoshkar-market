@@ -217,4 +217,8 @@ export const seedProducts: SeedProduct[] = [
   // Фрукты и овощи
   { name: "Черешня (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 350, caseSize: 1, markup: 49, imageUrl: "/chereshnya.jpg" },
   { name: "Нектарины азербайджанские (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 140, caseSize: 1, markup: 39, imageUrl: "/nektariny-azerbaydzhan.jpg" },
+  { name: "Томаты розовые (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 70, caseSize: 1, markup: 50, imageUrl: "/tomaty-rozoviye.jpg" },
+  { name: "Огурцы грунтовые (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 90, caseSize: 1, markup: 20, imageUrl: "/ogurtsy-gruntoviye.jpg" },
+  { name: "Картофель (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 45, caseSize: 1, markup: 20, imageUrl: "/kartofel.jpg" },
+  { name: "Лук (кг)", category: Category.PRODUCE, volumeMl: null, purchasePrice: 45, caseSize: 1, markup: 15, imageUrl: "/luk.jpg" },
 ];
