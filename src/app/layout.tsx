@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yoshkar-market.ru"),
   title: "Йошкар Маркет — продукты и напитки с доставкой",
   description: "Доставка продуктов, энергетиков и напитков по Йошкар-Оле",
   appleWebApp: {
