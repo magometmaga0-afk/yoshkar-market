@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import type { ProductDTO } from "@/lib/types";
@@ -22,11 +23,13 @@ export default function ProductDetailBody({
           }`}
         >
           {hasPhoto ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={product.imageUrl!}
               alt={product.name}
-              className="absolute inset-0 h-full w-full object-contain p-6"
+              fill
+              priority
+              sizes="(max-width: 1023px) 100vw, 45vw"
+              className="object-contain p-6"
             />
           ) : (
             <span className="absolute inset-0 flex items-center justify-center text-8xl">
