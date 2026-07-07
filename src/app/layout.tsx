@@ -5,6 +5,7 @@ import "./globals.css";
 import CartBar from "@/components/CartBar";
 import Header from "@/components/Header";
 import AgeGate from "@/components/AgeGate";
+import Footer from "@/components/Footer";
 
 const YANDEX_METRIKA_ID = "110471934";
 
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Header />
         {children}
+        <Footer />
         <CartBar />
         {modal}
         <AgeGate />
