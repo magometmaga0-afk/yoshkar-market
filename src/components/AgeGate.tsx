@@ -21,7 +21,7 @@ export default function AgeGate() {
     }
   }, [status]);
 
-  if (pathname.startsWith("/admin")) return null;
+  if (pathname.startsWith("/admin") || pathname.startsWith("/privacy")) return null;
   if (status === "checking" || status === "hidden") return null;
 
   function confirm() {
