@@ -40,16 +40,18 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
               {tile.emoji}
             </span>
           )}
-          {product.volumeMl && (
-            <span className="absolute left-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
-              {product.volumeMl} мл
-            </span>
-          )}
-          {product.caseSize > 1 && (
-            <span className="absolute right-2 top-2 rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
-              уп. {product.caseSize} шт
-            </span>
-          )}
+          <div className="absolute inset-x-1.5 top-1.5 flex flex-wrap items-start justify-between gap-1">
+            {product.volumeMl && (
+              <span className="rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+                {product.volumeMl} мл
+              </span>
+            )}
+            {product.caseSize > 1 && (
+              <span className="rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
+                уп. {product.caseSize} шт
+              </span>
+            )}
+          </div>
         </div>
 
         <div className="px-3 pt-3">
