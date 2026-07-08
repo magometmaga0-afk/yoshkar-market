@@ -221,10 +221,10 @@ export const seedProducts: SeedProduct[] = [
   { name: "Корм для кошек \"Мурчик\" с индейкой", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 75, purchasePrice: 17.5, caseSize: 35, markup: 10, imageUrl: "/murchik-indeyka.jpg" },
 
   // Фрукты и овощи
-  { name: "Черешня", category: Category.PRODUCE, volumeMl: null, weightGrams: 500, purchasePrice: 175, caseSize: 1, markup: 24.5, imageUrl: "/chereshnya.jpg" },
-  { name: "Нектарины азербайджанские", category: Category.PRODUCE, volumeMl: null, weightGrams: 500, purchasePrice: 70, caseSize: 1, markup: 19.5, imageUrl: "/nektariny-azerbaydzhan.jpg" },
-  { name: "Томаты розовые", category: Category.PRODUCE, volumeMl: null, weightGrams: 500, purchasePrice: 35, caseSize: 1, markup: 25, imageUrl: "/tomaty-rozoviye.jpg" },
-  { name: "Огурцы грунтовые", category: Category.PRODUCE, volumeMl: null, weightGrams: 500, purchasePrice: 45, caseSize: 1, markup: 10, imageUrl: "/ogurtsy-gruntoviye.jpg" },
-  { name: "Картофель", category: Category.PRODUCE, volumeMl: null, weightGrams: 500, purchasePrice: 22.5, caseSize: 1, markup: 10, imageUrl: "/kartofel.jpg" },
-  { name: "Лук", category: Category.PRODUCE, volumeMl: null, weightGrams: 500, purchasePrice: 22.5, caseSize: 1, markup: 7.5, imageUrl: "/luk.jpg" },
+  { name: "Черешня", category: Category.PRODUCE, volumeMl: null, weightGrams: 1000, purchasePrice: 350, caseSize: 1, markup: 49, imageUrl: "/chereshnya.jpg" },
+  { name: "Нектарины азербайджанские", category: Category.PRODUCE, volumeMl: null, weightGrams: 1000, purchasePrice: 140, caseSize: 1, markup: 39, imageUrl: "/nektariny-azerbaydzhan.jpg" },
+  { name: "Томаты розовые", category: Category.PRODUCE, volumeMl: null, weightGrams: 1000, purchasePrice: 70, caseSize: 1, markup: 50, imageUrl: "/tomaty-rozoviye.jpg" },
+  { name: "Огурцы грунтовые", category: Category.PRODUCE, volumeMl: null, weightGrams: 1000, purchasePrice: 90, caseSize: 1, markup: 20, imageUrl: "/ogurtsy-gruntoviye.jpg" },
+  { name: "Картофель", category: Category.PRODUCE, volumeMl: null, weightGrams: 1000, purchasePrice: 45, caseSize: 1, markup: 20, imageUrl: "/kartofel.jpg" },
+  { name: "Лук", category: Category.PRODUCE, volumeMl: null, weightGrams: 1000, purchasePrice: 45, caseSize: 1, markup: 15, imageUrl: "/luk.jpg" },
 ];
