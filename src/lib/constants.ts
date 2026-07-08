@@ -1,6 +1,6 @@
 export const PICKUP_ADDRESS = "ул. Соловьева, 45";
 
-export const MIN_ORDER_AMOUNT = 3000;
+export const MIN_ORDER_AMOUNT = 1000;
 
 export const WORKING_HOURS = { start: 8, end: 23 };
 
@@ -17,3 +17,4 @@ export function isWithinWorkingHours(date: Date = new Date()): boolean {
   const hour = getMoscowHour(date);
   return hour >= WORKING_HOURS.start && hour < WORKING_HOURS.end;
 }
+
