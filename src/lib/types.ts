@@ -8,5 +8,9 @@ export type ProductDTO = {
   caseSize: number;
   imageUrl: string | null;
   description: string | null;
+  calories: number | null;
+  protein: number | null;
+  fat: number | null;
+  carbs: number | null;
   inStock: boolean;
 };

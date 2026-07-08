@@ -29,6 +29,10 @@ export default async function HomePage() {
     caseSize: p.category !== "BEER" ? 1 : p.caseSize,
     imageUrl: p.imageUrl,
     description: p.description,
+    calories: p.calories,
+    protein: p.protein,
+    fat: p.fat,
+    carbs: p.carbs,
     inStock: p.inStock,
   }));
 

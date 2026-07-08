@@ -46,6 +46,10 @@ model Product {
   sellPrice     Decimal     @db.Decimal(10, 2)
   imageUrl      String?
   description   String?
+  calories      Float?
+  protein       Float?
+  fat           Float?
+  carbs         Float?
   inStock       Boolean     @default(true)
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt

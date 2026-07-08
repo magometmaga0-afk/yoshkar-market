@@ -12,6 +12,10 @@ type RawProduct = {
   caseSize: number;
   imageUrl: string | null;
   description: string | null;
+  calories: number | null;
+  protein: number | null;
+  fat: number | null;
+  carbs: number | null;
   inStock: boolean;
 };
 
@@ -26,6 +30,10 @@ function toDto(p: RawProduct): ProductDTO {
     caseSize: p.category !== "BEER" ? 1 : p.caseSize,
     imageUrl: p.imageUrl,
     description: p.description,
+    calories: p.calories,
+    protein: p.protein,
+    fat: p.fat,
+    carbs: p.carbs,
     inStock: p.inStock,
   };
 }

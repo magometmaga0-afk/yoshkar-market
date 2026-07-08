@@ -22,10 +22,14 @@ export async function POST() {
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
       sellPrice: computeSellPrice(p.purchasePrice, p.markup ?? getMarkup(p.category)),
-      // imageUrl/description обновляются, только если заданы в seedProducts —
+      // imageUrl/description/КБЖУ обновляются, только если заданы в seedProducts —
       // иначе не трогаем то, что уже вручную выставлено в базе через админку.
       ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}),
       ...(p.description ? { description: p.description } : {}),
+      ...(p.calories != null ? { calories: p.calories } : {}),
+      ...(p.protein != null ? { protein: p.protein } : {}),
+      ...(p.fat != null ? { fat: p.fat } : {}),
+      ...(p.carbs != null ? { carbs: p.carbs } : {}),
     };
     await prisma.product.upsert({
       where: { name: p.name },

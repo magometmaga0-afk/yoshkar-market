@@ -5,6 +5,7 @@ import type { ProductDTO } from "@/lib/types";
 import { CATEGORY_LABEL, CATEGORY_TILE } from "@/lib/productCategory";
 import { formatVolume } from "@/lib/formatVolume";
 import { formatWeight } from "@/lib/formatWeight";
+import NutritionFacts from "@/components/NutritionFacts";
 
 export default function ProductDetailBody({
   product,
@@ -66,6 +67,16 @@ export default function ProductDetailBody({
               {product.description?.trim() || "Описание для этого товара скоро появится."}
             </p>
           </div>
+
+          {product.calories != null && product.protein != null && product.fat != null && product.carbs != null && (
+            <NutritionFacts
+              calories={product.calories}
+              protein={product.protein}
+              fat={product.fat}
+              carbs={product.carbs}
+              perLiquid={Boolean(product.volumeMl)}
+            />
+          )}
 
           <div className="mt-5 hidden lg:block">
             <ProductDetailActions product={product} />
