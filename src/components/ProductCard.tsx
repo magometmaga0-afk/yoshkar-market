@@ -51,7 +51,7 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
         </div>
 
         <div className="px-3 pt-3">
-          <h3 className="line-clamp-2 min-h-[2.5em] text-sm font-medium leading-tight">
+          <h3 className="line-clamp-2 min-h-[2em] text-xs font-medium leading-tight">
             {product.name}
           </h3>
           {product.volumeMl && (

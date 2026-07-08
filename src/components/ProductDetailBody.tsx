@@ -42,7 +42,7 @@ export default function ProductDetailBody({
         <div className="mt-5 lg:mt-0">
           <div className="pr-12 sm:pr-14">
             <p className="text-xs font-medium text-brand-dark">{CATEGORY_LABEL[product.category]}</p>
-            <h1 className="mt-1 text-xl font-bold leading-snug">{product.name}</h1>
+            <h1 className="mt-1 text-lg font-bold leading-snug">{product.name}</h1>
             {product.volumeMl && (
               <p className="mt-1 text-sm text-foreground/50">{formatVolume(product.volumeMl)}</p>
             )}
