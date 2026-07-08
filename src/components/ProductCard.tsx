@@ -21,7 +21,7 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
   const packagePrice = product.sellPrice * product.caseSize;
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-md">
+    <div className="flex flex-col overflow-hidden rounded-2xl bg-card shadow-[0_1px_3px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.07)] transition hover:shadow-[0_2px_6px_rgba(0,0,0,0.08),0_8px_16px_rgba(0,0,0,0.1)]">
       <Link href={`/product/${product.id}`} className="contents">
         <div
           className={`relative aspect-square w-full ${
