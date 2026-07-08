@@ -3,8 +3,9 @@ import { Category } from "@/generated/prisma/client";
 export const MARKUP = 10;
 
 export function getMarkup(category: Category): number {
-  // Чай и кофе — наценка +20₽ вместо стандартных +10₽.
-  return category === Category.COFFEE_TEA ? 20 : MARKUP;
+  // Энергетики, напитки и чай/кофе — наценка +20₽ вместо стандартных +10₽.
+  const MARKUP_20_CATEGORIES: Category[] = [Category.ENERGY, Category.OTHER, Category.COFFEE_TEA];
+  return MARKUP_20_CATEGORIES.includes(category) ? 20 : MARKUP;
 }
 
 export function computeSellPrice(purchasePrice: number, markup: number): number {
@@ -88,22 +89,22 @@ export const seedProducts: SeedProduct[] = [
   { name: "Эсса Ананас Грейпфрут (ст/б)", category: Category.BEER, volumeMl: 450, purchasePrice: 79, caseSize: 20, markup: 10, imageUrl: "/essa-ananas-greypfrut.jpg" },
 
   // Энергетики
-  { name: "Adrenaline Rush без сахара (белый)", category: Category.ENERGY, volumeMl: 449, purchasePrice: 98, caseSize: 12, imageUrl: "/adrenaline-rush-zero-white.jpg" },
+  { name: "Adrenaline Rush Sugar Free (White)", category: Category.ENERGY, volumeMl: 449, purchasePrice: 98, caseSize: 12, imageUrl: "/adrenaline-rush-zero-white.jpg" },
   { name: "Adrenaline Rush (ж/б)", category: Category.ENERGY, volumeMl: 250, purchasePrice: 75, caseSize: 12, imageUrl: "/adrenaline-rush-025-jb.jpg" },
   { name: "Adrenaline Rush", category: Category.ENERGY, volumeMl: 449, purchasePrice: 102, caseSize: 12, imageUrl: "/adrenaline-rush-classic.jpg" },
-  { name: "Флэш Ягодный (ж/б)", category: Category.ENERGY, volumeMl: 440, purchasePrice: 63, caseSize: 24, imageUrl: "/flash-yagodniy-jb.jpg" },
-  { name: "Флэш (ПЭТ)", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 88, caseSize: 9, imageUrl: "/flash-pet-1l.jpg" },
-  { name: "Флэш (ПЭТ) 0.5л", category: Category.ENERGY, volumeMl: 500, purchasePrice: 63, caseSize: 20, imageUrl: "/flash-pet-05.jpg" },
-  { name: "Black Monster ультра фэнтези", category: Category.ENERGY, volumeMl: 500, purchasePrice: 165, caseSize: 12, imageUrl: "/monster-ultra-black.jpg" },
-  { name: "Торнадо Шторм", category: Category.ENERGY, volumeMl: 450, purchasePrice: 66, caseSize: 12, imageUrl: "/tornado-storm.jpg" },
-  { name: "Торнадо Манго (ПЭТ)", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 89, caseSize: 6, imageUrl: "/tornado-mango-pet.jpg" },
+  { name: "Flash Berry (ж/б)", category: Category.ENERGY, volumeMl: 440, purchasePrice: 63, caseSize: 24, imageUrl: "/flash-yagodniy-jb.jpg" },
+  { name: "Flash (ПЭТ)", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 88, caseSize: 9, imageUrl: "/flash-pet-1l.jpg" },
+  { name: "Flash (ПЭТ) 0.5л", category: Category.ENERGY, volumeMl: 500, purchasePrice: 63, caseSize: 20, imageUrl: "/flash-pet-05.jpg" },
+  { name: "Black Monster Ultra Fantasy", category: Category.ENERGY, volumeMl: 500, purchasePrice: 165, caseSize: 12, imageUrl: "/monster-ultra-black.jpg" },
+  { name: "Tornado Storm", category: Category.ENERGY, volumeMl: 450, purchasePrice: 66, caseSize: 12, imageUrl: "/tornado-storm.jpg" },
+  { name: "Tornado Mango (ПЭТ)", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 89, caseSize: 6, imageUrl: "/tornado-mango-pet.jpg" },
   { name: "Mountain Dew (ПЭТ) 1л", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 95, caseSize: 9, imageUrl: "/mountain-dew-pet-1l.jpg" },
   { name: "Mountain Dew (ПЭТ) 0.5л", category: Category.ENERGY, volumeMl: 500, purchasePrice: 74, caseSize: 12, imageUrl: "/mountain-dew-pet-05.jpg" },
   { name: "Mountain Dew (ж/б)", category: Category.ENERGY, volumeMl: 330, purchasePrice: 64, caseSize: 24, imageUrl: "/mountain-dew-jb.jpg" },
-  { name: "Power Torr Манго (ПЭТ)", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 90, caseSize: 6, imageUrl: "/power-torr-mango-pet.jpg" },
-  { name: "Power Torr синий (ПЭТ)", category: Category.ENERGY, volumeMl: 500, purchasePrice: 59, caseSize: 12, imageUrl: "/power-torr-siniy-pet.jpg" },
-  { name: "Lit Energy Персик", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-peach.jpg" },
-  { name: "Lit Energy Малина Крэш", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-malina-crush.jpg" },
+  { name: "Power Torr Mango (ПЭТ)", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 90, caseSize: 6, imageUrl: "/power-torr-mango-pet.jpg" },
+  { name: "Power Torr Blue (ПЭТ)", category: Category.ENERGY, volumeMl: 500, purchasePrice: 59, caseSize: 12, imageUrl: "/power-torr-siniy-pet.jpg" },
+  { name: "Lit Energy Peach", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-peach.jpg" },
+  { name: "Lit Energy Raspberry Crush", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-malina-crush.jpg" },
   { name: "Lit Energy Berry Coconut", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-berry-coconut.jpg" },
   { name: "Lit Energy Classic", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-classic.jpg" },
   { name: "Lit Energy Original", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-original.jpg" },
@@ -111,13 +112,13 @@ export const seedProducts: SeedProduct[] = [
   { name: "Lit Energy Citrus Punch", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-citrus-punch.jpg" },
   { name: "Lit Energy Strawberry Bubblegum", category: Category.ENERGY, volumeMl: 450, purchasePrice: 73, caseSize: 12, imageUrl: "/lit-energy-strawberry-bubblegum.jpg" },
   { name: "Volt Гуава (ж/б)", category: Category.ENERGY, volumeMl: 450, purchasePrice: 74, caseSize: 24, imageUrl: "/volt-guava-jb.jpg" },
-  { name: "Горилла (ж/б) Личи и груша", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, markup: 20, imageUrl: "/gorilla-lychee-pear-jb.jpg" },
-  { name: "Флэш (ж/б) Ультра", category: Category.ENERGY, volumeMl: 450, purchasePrice: 63, caseSize: 24, markup: 10, imageUrl: "/flesh-ultra-jb.jpg" },
-  { name: "Берн Арбуз б/сах (ж/б)", category: Category.ENERGY, volumeMl: 500, purchasePrice: 88, caseSize: 12, markup: 10, imageUrl: "/burn-arbuz.jpg" },
-  { name: "Black Monster Ультра Вайт", category: Category.ENERGY, volumeMl: 500, purchasePrice: 160, caseSize: 12, markup: 20, imageUrl: "/black-monster-ultra-white.jpg" },
+  { name: "Gorilla Lychee & Pear (ж/б)", category: Category.ENERGY, volumeMl: 450, purchasePrice: 78, caseSize: 24, imageUrl: "/gorilla-lychee-pear-jb.jpg" },
+  { name: "Flash Ultra (ж/б)", category: Category.ENERGY, volumeMl: 450, purchasePrice: 63, caseSize: 24, imageUrl: "/flesh-ultra-jb.jpg" },
+  { name: "Burn Watermelon Sugar Free (ж/б)", category: Category.ENERGY, volumeMl: 500, purchasePrice: 88, caseSize: 12, imageUrl: "/burn-arbuz.jpg" },
+  { name: "Black Monster Ultra White", category: Category.ENERGY, volumeMl: 500, purchasePrice: 160, caseSize: 12, imageUrl: "/black-monster-ultra-white.jpg" },
 
   // Напитки
-  { name: "Добрый Pulpy Апельсин 0,45л", category: Category.OTHER, volumeMl: 450, purchasePrice: 57, caseSize: 12, markup: 10, imageUrl: "/dobriy-pulpy-apelsin.jpg" },
+  { name: "Добрый Pulpy Апельсин 0,45л", category: Category.OTHER, volumeMl: 450, purchasePrice: 57, caseSize: 12, imageUrl: "/dobriy-pulpy-apelsin.jpg" },
   { name: "Мохито клубничный (ж/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 61, caseSize: 24, imageUrl: "/mohito-klubnichniy-jb.jpg" },
   { name: "Добрый Апельсин/Фанта 1л", category: Category.OTHER, volumeMl: 1000, purchasePrice: 75, caseSize: 12, imageUrl: "/dobriy-fanta-pet.jpg" },
   { name: "Добрый Фанта (ПЭТ)", category: Category.OTHER, volumeMl: 500, purchasePrice: 54, caseSize: 24, imageUrl: "/dobriy-fanta-pet.jpg" },
@@ -146,15 +147,15 @@ export const seedProducts: SeedProduct[] = [
   { name: "Напиток \"Натахтари\" Фейхоа (ст/б)", category: Category.OTHER, volumeMl: 500, purchasePrice: 90, caseSize: 20, imageUrl: "/natahtari-feyhoa.jpg" },
   { name: "Добрый Кола (ж/б)", category: Category.OTHER, volumeMl: 330, purchasePrice: 55, caseSize: 24, imageUrl: "/dobriy-kola-jb.jpg" },
   { name: "Кола (Иран, ж/б)", category: Category.OTHER, volumeMl: 300, purchasePrice: 57, caseSize: 24, imageUrl: "/kola-iran-jb.jpg" },
-  { name: "Квас Бочковой 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 79, caseSize: 6, markup: 20, imageUrl: "/kvas-bochkovoy-15l.jpg" },
-  { name: "Аллея Источников №17 (ПЭТ)", category: Category.OTHER, volumeMl: 1500, purchasePrice: 47, caseSize: 6, markup: 10, imageUrl: "/alleya-istochnikov-17.jpg" },
-  { name: "Букет Чувашии со вкусом лимона 0,5л", category: Category.OTHER, volumeMl: 500, purchasePrice: 37, caseSize: 12, markup: 10, imageUrl: "/buket-chuvashii-05l.jpg" },
-  { name: "Букет Чувашии с ароматом лимона 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 85, caseSize: 6, markup: 10, imageUrl: "/buket-chuvashii-15l.jpg" },
-  { name: "Раифский источник без газа 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, markup: 5, imageUrl: "/raifsky-bez-gaza.jpg" },
-  { name: "Раифский источник газ. 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, markup: 5, imageUrl: "/raifsky-gaz.jpg" },
-  { name: "Квас Домашний 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 98, caseSize: 6, markup: 10, imageUrl: "/kvas-domashniy.jpg" },
-  { name: "Спрайт (ж/б, Иран)", category: Category.OTHER, volumeMl: 300, purchasePrice: 55, caseSize: 24, markup: 10, imageUrl: "/sprite-jb-iran.jpg" },
-  { name: "Морс \"Калинов\" Клюква", category: Category.OTHER, volumeMl: 1700, purchasePrice: 98, caseSize: 6, markup: 10, imageUrl: "/kalinov-rodnik-klukva.jpg" },
+  { name: "Квас Бочковой 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 79, caseSize: 6, imageUrl: "/kvas-bochkovoy-15l.jpg" },
+  { name: "Аллея Источников №17 (ПЭТ)", category: Category.OTHER, volumeMl: 1500, purchasePrice: 47, caseSize: 6, imageUrl: "/alleya-istochnikov-17.jpg" },
+  { name: "Букет Чувашии со вкусом лимона 0,5л", category: Category.OTHER, volumeMl: 500, purchasePrice: 37, caseSize: 12, imageUrl: "/buket-chuvashii-05l.jpg" },
+  { name: "Букет Чувашии с ароматом лимона 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 85, caseSize: 6, imageUrl: "/buket-chuvashii-15l.jpg" },
+  { name: "Раифский источник без газа 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, imageUrl: "/raifsky-bez-gaza.jpg" },
+  { name: "Раифский источник газ. 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 37, caseSize: 6, imageUrl: "/raifsky-gaz.jpg" },
+  { name: "Квас Домашний 1,5л", category: Category.OTHER, volumeMl: 1500, purchasePrice: 98, caseSize: 6, imageUrl: "/kvas-domashniy.jpg" },
+  { name: "Спрайт (ж/б, Иран)", category: Category.OTHER, volumeMl: 300, purchasePrice: 55, caseSize: 24, imageUrl: "/sprite-jb-iran.jpg" },
+  { name: "Морс \"Калинов\" Клюква", category: Category.OTHER, volumeMl: 1700, purchasePrice: 98, caseSize: 6, imageUrl: "/kalinov-rodnik-klukva.jpg" },
 
   // Снеки и сладости
   { name: "Чоко Пай 6шт", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16, imageUrl: "/choco-pie-6pack.jpg" },
