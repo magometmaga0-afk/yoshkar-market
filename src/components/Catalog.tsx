@@ -25,6 +25,26 @@ function normalize(s: string): string {
   return s.toLowerCase().replace(/ё/g, "е");
 }
 
+// Доп. слова-синонимы на случай, если склонение не совпадает с названием категории
+// подстрокой (например, "напиток" не входит в "Напитки" как подстрока).
+const CATEGORY_SEARCH_ALIASES: Partial<Record<TabKey, string[]>> = {
+  ENERGY: ["энергетик", "энергетический"],
+  OTHER: ["напиток", "сок", "вода", "газировка", "лимонад"],
+  SNACKS: ["снек", "чипсы", "шоколад", "конфеты", "сладост"],
+  COFFEE_TEA: ["чай", "кофе"],
+  CANNED: ["консерв", "тушенка", "рыбные консервы"],
+  GROCERY: ["крупа", "крупы", "макароны"],
+  PET_SUPPLIES: ["корм", "кошка", "кошек", "кот"],
+  PRODUCE: ["фрукт", "овощ"],
+};
+
+function categoryMatches(category: TabKey, q: string): boolean {
+  const label = normalize(CATEGORY_LABEL[category as keyof typeof CATEGORY_LABEL] ?? "");
+  if (label.includes(q)) return true;
+  const aliases = CATEGORY_SEARCH_ALIASES[category] ?? [];
+  return aliases.some((a) => normalize(a).includes(q) || q.includes(normalize(a)));
+}
+
 function HighlightedName({ name, query }: { name: string; query: string }) {
   if (!query) return <>{name}</>;
   const nName = normalize(name);
@@ -57,7 +77,9 @@ export default function Catalog({ products }: { products: ProductDTO[] }) {
   const searchResults = useMemo(() => {
     if (!isSearching) return [];
     const q = normalize(query.trim());
-    return products.filter((p) => normalize(p.name).includes(q));
+    return products.filter(
+      (p) => normalize(p.name).includes(q) || categoryMatches(p.category as TabKey, q),
+    );
   }, [products, query, isSearching]);
 
   const groupedResults = useMemo(() => {
