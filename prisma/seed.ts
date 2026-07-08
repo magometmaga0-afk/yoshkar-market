@@ -25,11 +25,12 @@ async function main() {
       ...(p.fat != null ? { fat: p.fat } : {}),
       ...(p.carbs != null ? { carbs: p.carbs } : {}),
     };
-    await prisma.product.upsert({
-      where: { name: p.name },
-      create: { name: p.name, ...data },
-      update: data,
-    });
+    const existing = await prisma.product.findFirst({ where: { name: p.name, volumeMl: p.volumeMl } });
+    if (existing) {
+      await prisma.product.update({ where: { id: existing.id }, data });
+    } else {
+      await prisma.product.create({ data: { name: p.name, ...data } });
+    }
   }
   console.log(`Синхронизировано товаров: ${seedProducts.length}`);
 }
