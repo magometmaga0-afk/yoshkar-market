@@ -6,6 +6,7 @@ import { useCartStore } from "@/store/cart";
 import type { ProductDTO } from "@/lib/types";
 import { CATEGORY_TILE } from "@/lib/productCategory";
 import { formatPrice } from "@/lib/formatPrice";
+import { formatVolume } from "@/lib/formatVolume";
 
 export default function ProductCard({ product }: { product: ProductDTO }) {
   const quantity = useCartStore(
@@ -40,24 +41,22 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
               {tile.emoji}
             </span>
           )}
-          <div className="absolute inset-x-1.5 top-1.5 flex flex-wrap items-start justify-between gap-1">
-            {product.volumeMl && (
-              <span className="rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
-                {product.volumeMl} мл
-              </span>
-            )}
-            {product.caseSize > 1 && (
+          {product.caseSize > 1 && (
+            <div className="absolute inset-x-1.5 top-1.5 flex justify-end">
               <span className="rounded-full border border-border bg-white/90 px-2 py-0.5 text-[11px] font-medium text-foreground/70 shadow-sm">
                 уп. {product.caseSize} шт
               </span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         <div className="px-3 pt-3">
           <h3 className="line-clamp-2 min-h-[2.5em] text-sm font-medium leading-tight">
             {product.name}
           </h3>
+          {product.volumeMl && (
+            <p className="mt-0.5 text-xs text-foreground/40">{formatVolume(product.volumeMl)}</p>
+          )}
         </div>
       </Link>
 

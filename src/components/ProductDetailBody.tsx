@@ -3,6 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import ProductDetailActions from "@/components/ProductDetailActions";
 import type { ProductDTO } from "@/lib/types";
 import { CATEGORY_LABEL, CATEGORY_TILE } from "@/lib/productCategory";
+import { formatVolume } from "@/lib/formatVolume";
 
 export default function ProductDetailBody({
   product,
@@ -42,20 +43,18 @@ export default function ProductDetailBody({
           <div className="pr-12 sm:pr-14">
             <p className="text-xs font-medium text-brand-dark">{CATEGORY_LABEL[product.category]}</p>
             <h1 className="mt-1 text-xl font-bold leading-snug">{product.name}</h1>
+            {product.volumeMl && (
+              <p className="mt-1 text-sm text-foreground/50">{formatVolume(product.volumeMl)}</p>
+            )}
           </div>
 
-          <div className="mt-3 flex flex-wrap gap-2">
-            {product.volumeMl && (
-              <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground/70">
-                {product.volumeMl} мл
-              </span>
-            )}
-            {product.caseSize > 1 && (
+          {product.caseSize > 1 && (
+            <div className="mt-3 flex flex-wrap gap-2">
               <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground/70">
                 уп. {product.caseSize} шт
               </span>
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="mt-5 rounded-2xl border border-border bg-card p-4">
             <h2 className="mb-1.5 text-sm font-semibold text-foreground/80">Описание</h2>
