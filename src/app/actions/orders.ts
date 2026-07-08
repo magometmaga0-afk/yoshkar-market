@@ -1,8 +1,10 @@
 "use server";
 
+import { after } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { PICKUP_ADDRESS, MIN_ORDER_AMOUNT, WORKING_HOURS, isWithinWorkingHours } from "@/lib/constants";
 import { formatPrice } from "@/lib/formatPrice";
+import { sendTelegramMessage, newOrderTelegramText } from "@/lib/telegram";
 import { makeStrictEnum } from "@prisma/client/runtime/client";
 
 export type CheckoutItem = { productId: string; quantity: number };
@@ -127,6 +129,27 @@ export async function createOrder(
       items: { create: orderItemsData },
     },
   });
+
+  // После ответа клиенту, не блокируя оформление заказа.
+  after(() =>
+    sendTelegramMessage(
+      newOrderTelegramText({
+        id: order.id,
+        customerName,
+        phone,
+        address,
+        paymentMethod,
+        comment: comment || null,
+        totalAmount,
+        totalProfit: totalAmount - totalCost,
+        items: orderItemsData.map((i) => ({
+          productName: i.productName,
+          quantity: i.quantity,
+          unitSellPrice: i.unitSellPrice,
+        })),
+      }),
+    ),
+  );
 
   return { orderId: order.id };
 }
