@@ -17,6 +17,8 @@ export type SeedProduct = {
   category: Category;
   volumeMl: number | null;
   weightGrams?: number;
+  /** Количество пакетиков/штук в упаковке — показывается под названием (для чая, Choco Pie и т.п.). */
+  packCount?: number;
   purchasePrice: number;
   caseSize: number;
   imageUrl?: string;
@@ -34,6 +36,10 @@ export type SeedProduct = {
   fat?: number;
   /** Пищевая ценность на 100 г/мл — углеводы, г. */
   carbs?: number;
+  /** Гарантированный анализ корма для животных — клетчатка, %. */
+  fiber?: number;
+  /** Гарантированный анализ корма для животных — влага, %. */
+  moisture?: number;
 };
 
 // Наименования, закупочные цены и размер упаковки — из прайс-листа поставщика (2026-07-03).
@@ -168,7 +174,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Морс \"Калинов\" Клюква", category: Category.OTHER, volumeMl: 1700, purchasePrice: 98, caseSize: 6, imageUrl: "/kalinov-rodnik-klukva.jpg", description: "Морс из клюквы с высоким содержанием витамина C.", calories: 40, protein: 0.1, fat: 0, carbs: 9.7 },
 
   // Снеки и сладости
-  { name: "Choco Pie 6шт", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16, imageUrl: "/choco-pie-6pack.jpg", description: "Бисквитное печенье с маршмеллоу в шоколадной глазури.", calories: 440, protein: 5, fat: 22, carbs: 58 },
+  { name: "Choco Pie", category: Category.SNACKS, volumeMl: null, purchasePrice: 70, caseSize: 16, imageUrl: "/choco-pie-6pack.jpg", description: "Бисквитное печенье с маршмеллоу в шоколадной глазури.", calories: 440, protein: 5, fat: 22, carbs: 58 },
   { name: "Вафли \"Артековские\"", category: Category.SNACKS, volumeMl: null, weightGrams: 5000, purchasePrice: 1285, caseSize: 1, markup: 20, imageUrl: "/vafli-artekovskie.jpg", description: "Хрустящие вафли с ванильной начинкой.", calories: 520, protein: 5, fat: 28, carbs: 62 },
   { name: "Шоколад молочный \"Алёнка\"", category: Category.SNACKS, volumeMl: null, weightGrams: 75, purchasePrice: 78, caseSize: 16, imageUrl: "/alenka-75g.jpg", description: "Классический молочный шоколад.", calories: 550, protein: 7.5, fat: 35, carbs: 54 },
   { name: "Вафли Zebra с карам. арахис и изюм", category: Category.SNACKS, volumeMl: null, weightGrams: 40, purchasePrice: 33, caseSize: 15, imageUrl: "/vafli-zebra.jpg", description: "Вафли с карамелью, арахисом и изюмом.", calories: 500, protein: 6, fat: 27, carbs: 60 },
@@ -193,12 +199,12 @@ export const seedProducts: SeedProduct[] = [
   // Чай и кофе
   { name: "Кофе Жокей \"Голд\" м/у", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 75, purchasePrice: 168, caseSize: 12, description: "Растворимый кофе с насыщенным ароматом.", calories: 2, protein: 0.2, fat: 0, carbs: 0.3 },
   { name: "Кофе Жокей \"Импер\" раст.субл. м/у", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 75, purchasePrice: 168, caseSize: 12, imageUrl: "/kofe-zhokey-imper.jpg", description: "Сублимированный растворимый кофе с мягким вкусом.", calories: 2, protein: 0.2, fat: 0, carbs: 0.3 },
-  { name: "Greenfield Golden Ceylon 25пак", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 72, caseSize: 10, imageUrl: "/greenfield-golden-ceylon.jpg", description: "Чёрный цейлонский чай в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.3 },
-  { name: "Greenfield Green Melissa 100пак", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 258, caseSize: 9, markup: 20, imageUrl: "/greenfield-green-melissa.jpg", description: "Зелёный чай с мелиссой в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.2 },
-  { name: "Tess Pleasure 25пак", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 60, caseSize: 10, imageUrl: "/tess-plaisir.jpg", description: "Чёрный чай с фруктовыми добавками в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.3 },
-  { name: "Принцесса \"Нури\" Высокогорный 100пак. черн.", category: Category.COFFEE_TEA, volumeMl: null, purchasePrice: 148, caseSize: 18, imageUrl: "/princessa-nuri-vysokogorny.jpg", description: "Чёрный высокогорный чай в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.3 },
+  { name: "Greenfield Golden Ceylon", category: Category.COFFEE_TEA, volumeMl: null, packCount: 25, purchasePrice: 72, caseSize: 10, imageUrl: "/greenfield-golden-ceylon.jpg", description: "Чёрный цейлонский чай в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.3 },
+  { name: "Greenfield Green Melissa", category: Category.COFFEE_TEA, volumeMl: null, packCount: 100, purchasePrice: 258, caseSize: 9, markup: 20, imageUrl: "/greenfield-green-melissa.jpg", description: "Зелёный чай с мелиссой в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.2 },
+  { name: "Tess Pleasure", category: Category.COFFEE_TEA, volumeMl: null, packCount: 25, purchasePrice: 60, caseSize: 10, imageUrl: "/tess-plaisir.jpg", description: "Чёрный чай с фруктовыми добавками в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.3 },
+  { name: "Принцесса \"Нури\" Высокогорный", category: Category.COFFEE_TEA, volumeMl: null, packCount: 100, purchasePrice: 148, caseSize: 18, imageUrl: "/princessa-nuri-vysokogorny.jpg", description: "Чёрный высокогорный чай в пакетиках.", calories: 1, protein: 0, fat: 0, carbs: 0.3 },
   { name: "Кофе \"Нескафе 3в1\" Классик", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 15, purchasePrice: 290, caseSize: 20, imageUrl: "/nescafe-3v1-classic.jpg", description: "Растворимый кофейный напиток 3 в 1 с сахаром и сливками.", calories: 45, protein: 1, fat: 1.5, carbs: 8 },
-  { name: "Jacobs Monarch Intense (ст/б)", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 48, purchasePrice: 185, caseSize: 12, markup: 20, imageUrl: "/jacobs-monarch-intense.jpg", description: "Растворимый кофе с насыщенным крепким вкусом.", calories: 2, protein: 0.2, fat: 0, carbs: 0.3 },
+  { name: "Jacobs Monarch Intense", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 48, purchasePrice: 185, caseSize: 12, markup: 20, imageUrl: "/jacobs-monarch-intense.jpg", description: "Растворимый кофе с насыщенным крепким вкусом.", calories: 2, protein: 0.2, fat: 0, carbs: 0.3 },
   { name: "Кофе \"Черная карта голд\"", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 75, purchasePrice: 185, caseSize: 12, markup: 20, imageUrl: "/chernaya-karta-gold.jpg", description: "Растворимый кофе с мягким ароматом.", calories: 2, protein: 0.2, fat: 0, carbs: 0.3 },
   { name: "Кофе \"Суаре\" \"Кофейня на паяхъ\"", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 75, purchasePrice: 228, caseSize: 12, markup: 20, imageUrl: "/suare-kofeynya.jpg", description: "Растворимый кофе с насыщенным ароматом.", calories: 2, protein: 0.2, fat: 0, carbs: 0.3 },
   { name: "Кофе Жокей \"Триумф\" раст.субл. м/у", category: Category.COFFEE_TEA, volumeMl: null, weightGrams: 75, purchasePrice: 168, caseSize: 12, markup: 20, imageUrl: "/zhokey-triumf.jpg", description: "Сублимированный растворимый кофе с мягким вкусом.", calories: 2, protein: 0.2, fat: 0, carbs: 0.3 },
@@ -207,10 +213,10 @@ export const seedProducts: SeedProduct[] = [
   { name: "Сардина в т/с с овощ. гарн. ГОСТ (Сохраним Традиции)", category: Category.CANNED, volumeMl: null, weightGrams: 240, purchasePrice: 110, caseSize: 24, imageUrl: "/sardina-v-tomate.jpg", description: "Сардина с овощным гарниром в томатном соусе.", calories: 170, protein: 15, fat: 10, carbs: 5 },
   { name: "Килька в т/с красная банка", category: Category.CANNED, volumeMl: null, purchasePrice: 49, caseSize: 1, imageUrl: "/kilka-v-tomate.jpg", description: "Килька в томатном соусе.", calories: 160, protein: 14, fat: 8, carbs: 6 },
   { name: "Скумбрия в масле (Сохраним традиции)", category: Category.CANNED, volumeMl: null, weightGrams: 240, purchasePrice: 165, caseSize: 24, imageUrl: "/skumbriya-v-masle.jpg", description: "Скумбрия в масле.", calories: 280, protein: 18, fat: 23, carbs: 0 },
-  { name: "Сгущенка \"МариМолоко\" 250г", category: Category.CANNED, volumeMl: null, weightGrams: 250, purchasePrice: 52, caseSize: 24, imageUrl: "/sgushenka-marimoloko.jpg", description: "Сгущённое молоко с сахаром по ГОСТ.", calories: 320, protein: 7.2, fat: 8.5, carbs: 56 },
+  { name: "Сгущенка \"МариМолоко\"", category: Category.CANNED, volumeMl: null, weightGrams: 250, purchasePrice: 52, caseSize: 24, imageUrl: "/sgushenka-marimoloko.jpg", description: "Сгущённое молоко с сахаром по ГОСТ.", calories: 320, protein: 7.2, fat: 8.5, carbs: 56 },
   { name: "Горошек \"Фрау Марта\"", category: Category.CANNED, volumeMl: null, weightGrams: 310, purchasePrice: 68, caseSize: 15, imageUrl: "/frau-marta-goroshek.jpg", description: "Консервированный зелёный горошек.", calories: 55, protein: 5, fat: 0.2, carbs: 8 },
-  { name: "Сгущенка \"МариМолоко\" 350г", category: Category.CANNED, volumeMl: null, weightGrams: 350, purchasePrice: 56, caseSize: 24, markup: 15, imageUrl: "/sgushenka-marimoloko-350.jpg", description: "Сгущённое молоко с сахаром по ГОСТ.", calories: 320, protein: 7.2, fat: 8.5, carbs: 56 },
-  { name: "Сгущенка \"МариМолоко\" 450г", category: Category.CANNED, volumeMl: null, weightGrams: 450, purchasePrice: 71, caseSize: 30, markup: 10, imageUrl: "/sgushenka-marimoloko-350.jpg", description: "Сгущённое молоко с сахаром по ГОСТ.", calories: 320, protein: 7.2, fat: 8.5, carbs: 56 },
+  { name: "Сгущенка \"МариМолоко\"", category: Category.CANNED, volumeMl: null, weightGrams: 350, purchasePrice: 56, caseSize: 24, markup: 15, imageUrl: "/sgushenka-marimoloko-350.jpg", description: "Сгущённое молоко с сахаром по ГОСТ.", calories: 320, protein: 7.2, fat: 8.5, carbs: 56 },
+  { name: "Сгущенка \"МариМолоко\"", category: Category.CANNED, volumeMl: null, weightGrams: 450, purchasePrice: 71, caseSize: 30, markup: 10, imageUrl: "/sgushenka-marimoloko-350.jpg", description: "Сгущённое молоко с сахаром по ГОСТ.", calories: 320, protein: 7.2, fat: 8.5, carbs: 56 },
   { name: "Хрен \"Махеевъ\" туба столовый", category: Category.CANNED, volumeMl: null, weightGrams: 100, purchasePrice: 60, caseSize: 15, markup: 10, imageUrl: "/maheev-hren.jpg", description: "Столовый хрен, острая приправа.", calories: 45, protein: 2, fat: 0.2, carbs: 8 },
 
   // Бакалея
@@ -230,8 +236,8 @@ export const seedProducts: SeedProduct[] = [
   { name: "Бульон \"Роллтон\" куриный домашний", category: Category.GROCERY, volumeMl: null, weightGrams: 100, purchasePrice: 28, caseSize: 24, markup: 10, imageUrl: "/rollton-bulon-kuriniy.jpg", description: "Концентрат для приготовления бульона со вкусом курицы.", calories: 250, protein: 10, fat: 12, carbs: 25 },
 
   // Зоотовары
-  { name: "Kitekat", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 15000, purchasePrice: 3600, caseSize: 1, markup: 100, imageUrl: "/kitekat-15kg.jpg", description: "Сухой корм для взрослых кошек. Гарантированный анализ: белок 30%, жир 10%, клетчатка 3%, влага 10%." },
-  { name: "Корм для кошек \"Мурчик\" с индейкой", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 75, purchasePrice: 17.5, caseSize: 35, markup: 10, imageUrl: "/murchik-indeyka.jpg", description: "Влажный корм для кошек с индейкой в соусе. Гарантированный анализ: белок 8%, жир 5%, клетчатка 0,5%, влага 82%." },
+  { name: "Kitekat", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 15000, purchasePrice: 3600, caseSize: 1, markup: 100, imageUrl: "/kitekat-15kg.jpg", description: "Сухой корм для взрослых кошек.", protein: 30, fat: 10, fiber: 3, moisture: 10 },
+  { name: "Корм для кошек \"Мурчик\" с индейкой", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 75, purchasePrice: 17.5, caseSize: 35, markup: 10, imageUrl: "/murchik-indeyka.jpg", description: "Влажный корм для кошек с индейкой в соусе.", protein: 8, fat: 5, fiber: 0.5, moisture: 82 },
 
   // Фрукты и овощи
   { name: "Черешня", category: Category.PRODUCE, volumeMl: null, weightGrams: 1000, purchasePrice: 350, caseSize: 1, markup: 49, imageUrl: "/chereshnya.jpg", description: "Свежая черешня.", calories: 52, protein: 1.1, fat: 0.3, carbs: 11.5 },

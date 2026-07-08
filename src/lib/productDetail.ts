@@ -8,6 +8,7 @@ type RawProduct = {
   category: ProductDTO["category"];
   volumeMl: number | null;
   weightGrams: number | null;
+  packCount: number | null;
   sellPrice: unknown;
   caseSize: number;
   imageUrl: string | null;
@@ -16,6 +17,8 @@ type RawProduct = {
   protein: number | null;
   fat: number | null;
   carbs: number | null;
+  fiber: number | null;
+  moisture: number | null;
   inStock: boolean;
 };
 
@@ -26,6 +29,7 @@ function toDto(p: RawProduct): ProductDTO {
     category: p.category,
     volumeMl: p.volumeMl,
     weightGrams: p.weightGrams,
+    packCount: p.packCount,
     sellPrice: Number(p.sellPrice),
     caseSize: p.category !== "BEER" ? 1 : p.caseSize,
     imageUrl: p.imageUrl,
@@ -34,6 +38,8 @@ function toDto(p: RawProduct): ProductDTO {
     protein: p.protein,
     fat: p.fat,
     carbs: p.carbs,
+    fiber: p.fiber,
+    moisture: p.moisture,
     inStock: p.inStock,
   };
 }

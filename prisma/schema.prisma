@@ -41,6 +41,7 @@ model Product {
   category      Category
   volumeMl      Int?
   weightGrams   Int?
+  packCount     Int?
   caseSize      Int         @default(1)
   purchasePrice Decimal     @db.Decimal(10, 2)
   sellPrice     Decimal     @db.Decimal(10, 2)
@@ -50,6 +51,10 @@ model Product {
   protein       Float?
   fat           Float?
   carbs         Float?
+  // Для корма для животных (гарантированный анализ, % вместо ккал/г): используем те же
+  // protein/fat, плюс отдельно клетчатку и влагу.
+  fiber         Float?
+  moisture      Float?
   inStock       Boolean     @default(true)
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt

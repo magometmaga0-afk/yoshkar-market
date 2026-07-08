@@ -61,6 +61,9 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
           {product.weightGrams && (
             <p className="mt-0.5 text-xs text-foreground/40">{formatWeight(product.weightGrams)}</p>
           )}
+          {product.packCount && (
+            <p className="mt-0.5 text-xs text-foreground/40">{product.packCount} пак.</p>
+          )}
         </div>
       </Link>
 

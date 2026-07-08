@@ -6,6 +6,7 @@ import { CATEGORY_LABEL, CATEGORY_TILE } from "@/lib/productCategory";
 import { formatVolume } from "@/lib/formatVolume";
 import { formatWeight } from "@/lib/formatWeight";
 import NutritionFacts from "@/components/NutritionFacts";
+import PetNutritionFacts from "@/components/PetNutritionFacts";
 
 export default function ProductDetailBody({
   product,
@@ -51,6 +52,9 @@ export default function ProductDetailBody({
             {product.weightGrams && (
               <p className="mt-1 text-sm text-foreground/50">{formatWeight(product.weightGrams)}</p>
             )}
+            {product.packCount && (
+              <p className="mt-1 text-sm text-foreground/50">{product.packCount} пак.</p>
+            )}
           </div>
 
           {product.caseSize > 1 && (
@@ -77,6 +81,19 @@ export default function ProductDetailBody({
               perLiquid={Boolean(product.volumeMl)}
             />
           )}
+
+          {product.category === "PET_SUPPLIES" &&
+            product.protein != null &&
+            product.fat != null &&
+            product.fiber != null &&
+            product.moisture != null && (
+              <PetNutritionFacts
+                protein={product.protein}
+                fat={product.fat}
+                fiber={product.fiber}
+                moisture={product.moisture}
+              />
+            )}
 
           <div className="mt-5 hidden lg:block">
             <ProductDetailActions product={product} />

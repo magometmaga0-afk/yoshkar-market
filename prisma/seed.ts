@@ -13,6 +13,7 @@ async function main() {
       category: p.category,
       volumeMl: p.volumeMl,
       weightGrams: p.weightGrams ?? null,
+      packCount: p.packCount ?? null,
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
       sellPrice: computeSellPrice(p.purchasePrice, p.markup ?? getMarkup(p.category)),
@@ -24,8 +25,12 @@ async function main() {
       ...(p.protein != null ? { protein: p.protein } : {}),
       ...(p.fat != null ? { fat: p.fat } : {}),
       ...(p.carbs != null ? { carbs: p.carbs } : {}),
+      ...(p.fiber != null ? { fiber: p.fiber } : {}),
+      ...(p.moisture != null ? { moisture: p.moisture } : {}),
     };
-    const existing = await prisma.product.findFirst({ where: { name: p.name, volumeMl: p.volumeMl } });
+    const existing = await prisma.product.findFirst({
+      where: { name: p.name, volumeMl: p.volumeMl, weightGrams: p.weightGrams ?? null },
+    });
     if (existing) {
       await prisma.product.update({ where: { id: existing.id }, data });
     } else {

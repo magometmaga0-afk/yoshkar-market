@@ -23,6 +23,7 @@ export default async function HomePage() {
     category: p.category,
     volumeMl: p.volumeMl,
     weightGrams: p.weightGrams,
+    packCount: p.packCount,
     sellPrice: Number(p.sellPrice),
     // Всё, кроме пива, продаётся поштучно покупателю, даже если закупается
     // коробками — реальный размер упаковки виден только в админке.
@@ -33,6 +34,8 @@ export default async function HomePage() {
     protein: p.protein,
     fat: p.fat,
     carbs: p.carbs,
+    fiber: p.fiber,
+    moisture: p.moisture,
     inStock: p.inStock,
   }));
 
