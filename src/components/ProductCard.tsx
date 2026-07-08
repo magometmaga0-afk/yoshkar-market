@@ -7,6 +7,7 @@ import type { ProductDTO } from "@/lib/types";
 import { CATEGORY_TILE } from "@/lib/productCategory";
 import { formatPrice } from "@/lib/formatPrice";
 import { formatVolume } from "@/lib/formatVolume";
+import { formatWeight } from "@/lib/formatWeight";
 
 export default function ProductCard({ product }: { product: ProductDTO }) {
   const quantity = useCartStore(
@@ -57,6 +58,9 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
           {product.volumeMl && (
             <p className="mt-0.5 text-xs text-foreground/40">{formatVolume(product.volumeMl)}</p>
           )}
+          {product.weightGrams && (
+            <p className="mt-0.5 text-xs text-foreground/40">{formatWeight(product.weightGrams)}</p>
+          )}
         </div>
       </Link>
 
@@ -91,6 +95,7 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
                         name: product.name,
                         sellPrice: product.sellPrice,
                         volumeMl: product.volumeMl,
+                        weightGrams: product.weightGrams,
                         category: product.category,
                         caseSize: product.caseSize,
                         imageUrl: product.imageUrl,

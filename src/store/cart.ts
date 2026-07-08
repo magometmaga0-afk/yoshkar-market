@@ -6,6 +6,7 @@ export type CartItem = {
   name: string;
   sellPrice: number;
   volumeMl: number | null;
+  weightGrams: number | null;
   category: "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "CANNED" | "GROCERY" | "PET_SUPPLIES" | "PRODUCE";
   caseSize: number;
   imageUrl: string | null;
@@ -59,14 +60,14 @@ export const useCartStore = create<CartState>()(
     {
       name: "yoshkar-shop-cart",
       storage: createJSONStorage(() => localStorage),
-      version: 3,
+      version: 4,
       migrate: (persistedState) => {
         const state = persistedState as CartState;
         return {
           ...state,
           items: (state?.items ?? [])
             .filter((i) => typeof i.caseSize === "number" && i.caseSize > 0)
-            .map((i) => ({ ...i, imageUrl: i.imageUrl ?? null })),
+            .map((i) => ({ ...i, imageUrl: i.imageUrl ?? null, weightGrams: i.weightGrams ?? null })),
         };
       },
     },

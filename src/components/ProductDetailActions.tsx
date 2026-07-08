@@ -44,6 +44,7 @@ export default function ProductDetailActions({ product }: { product: ProductDTO 
                   name: product.name,
                   sellPrice: product.sellPrice,
                   volumeMl: product.volumeMl,
+                  weightGrams: product.weightGrams,
                   category: product.category,
                   caseSize: product.caseSize,
                   imageUrl: product.imageUrl,

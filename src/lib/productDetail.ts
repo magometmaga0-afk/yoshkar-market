@@ -7,6 +7,7 @@ type RawProduct = {
   name: string;
   category: ProductDTO["category"];
   volumeMl: number | null;
+  weightGrams: number | null;
   sellPrice: unknown;
   caseSize: number;
   imageUrl: string | null;
@@ -20,6 +21,7 @@ function toDto(p: RawProduct): ProductDTO {
     name: p.name,
     category: p.category,
     volumeMl: p.volumeMl,
+    weightGrams: p.weightGrams,
     sellPrice: Number(p.sellPrice),
     caseSize: p.category !== "BEER" ? 1 : p.caseSize,
     imageUrl: p.imageUrl,

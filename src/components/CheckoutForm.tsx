@@ -12,6 +12,7 @@ import Spinner from "@/components/Spinner";
 import { PICKUP_ADDRESS, MIN_ORDER_AMOUNT, WORKING_HOURS, isWithinWorkingHours } from "@/lib/constants";
 import { CATEGORY_TILE } from "@/lib/productCategory";
 import { formatPrice } from "@/lib/formatPrice";
+import { formatWeight } from "@/lib/formatWeight";
 
 const initialState: OrderFormState = {};
 
@@ -105,6 +106,7 @@ export default function CheckoutForm() {
                     <p className="sm:truncate text-sm font-medium">{item.name}</p>
                     <p className="text-xs text-foreground/50">
                       {formatPrice(item.sellPrice)} ₽/шт {item.volumeMl ? `· ${item.volumeMl} мл` : ""}
+                      {item.weightGrams ? `· ${formatWeight(item.weightGrams)}` : ""}
                       {item.caseSize > 1 ? ` · уп. ${item.caseSize} шт` : ""}
                     </p>
                   </div>

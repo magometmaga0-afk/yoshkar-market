@@ -4,6 +4,7 @@ import ProductDetailActions from "@/components/ProductDetailActions";
 import type { ProductDTO } from "@/lib/types";
 import { CATEGORY_LABEL, CATEGORY_TILE } from "@/lib/productCategory";
 import { formatVolume } from "@/lib/formatVolume";
+import { formatWeight } from "@/lib/formatWeight";
 
 export default function ProductDetailBody({
   product,
@@ -45,6 +46,9 @@ export default function ProductDetailBody({
             <h1 className="mt-1 text-lg font-bold leading-snug">{product.name}</h1>
             {product.volumeMl && (
               <p className="mt-1 text-sm text-foreground/50">{formatVolume(product.volumeMl)}</p>
+            )}
+            {product.weightGrams && (
+              <p className="mt-1 text-sm text-foreground/50">{formatWeight(product.weightGrams)}</p>
             )}
           </div>
 

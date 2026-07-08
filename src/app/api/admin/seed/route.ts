@@ -18,6 +18,7 @@ export async function POST() {
     const data = {
       category: p.category,
       volumeMl: p.volumeMl,
+      weightGrams: p.weightGrams ?? null,
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
       sellPrice: computeSellPrice(p.purchasePrice, p.markup ?? getMarkup(p.category)),

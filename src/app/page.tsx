@@ -22,6 +22,7 @@ export default async function HomePage() {
     name: p.name,
     category: p.category,
     volumeMl: p.volumeMl,
+    weightGrams: p.weightGrams,
     sellPrice: Number(p.sellPrice),
     // Всё, кроме пива, продаётся поштучно покупателю, даже если закупается
     // коробками — реальный размер упаковки виден только в админке.
