@@ -16,9 +16,10 @@ async function main() {
       caseSize: p.caseSize,
       purchasePrice: p.purchasePrice,
       sellPrice: computeSellPrice(p.purchasePrice, p.markup ?? getMarkup(p.category)),
-      // imageUrl обновляется, только если задан в seedProducts — иначе не трогаем
-      // то, что уже вручную выставлено в базе через админку.
+      // imageUrl/description обновляются, только если заданы в seedProducts —
+      // иначе не трогаем то, что уже вручную выставлено в базе через админку.
       ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}),
+      ...(p.description ? { description: p.description } : {}),
     };
     await prisma.product.upsert({
       where: { name: p.name },
