@@ -7,9 +7,8 @@ export function getMarkup(category: Category): number {
   return category === Category.COFFEE_TEA ? 20 : MARKUP;
 }
 
-// Цены продажи всегда заканчиваются на ,99 (психологическая цена).
 export function computeSellPrice(purchasePrice: number, markup: number): number {
-  return Math.floor(purchasePrice + markup) + 0.99;
+  return purchasePrice + markup;
 }
 
 export type SeedProduct = {
