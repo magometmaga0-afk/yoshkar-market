@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCartStore } from "@/store/cart";
@@ -9,7 +10,14 @@ import { formatPrice } from "@/lib/formatPrice";
 import { formatVolume } from "@/lib/formatVolume";
 import { formatWeight } from "@/lib/formatWeight";
 
-export default function ProductCard({ product }: { product: ProductDTO }) {
+export default function ProductCard({
+  product,
+  nameOverride,
+}: {
+  product: ProductDTO;
+  /** Заменяет отображаемое название (например, с подсветкой совпадения при поиске). */
+  nameOverride?: ReactNode;
+}) {
   const quantity = useCartStore(
     (s) => s.items.find((i) => i.productId === product.id)?.quantity ?? 0,
   );
@@ -53,7 +61,7 @@ export default function ProductCard({ product }: { product: ProductDTO }) {
 
         <div className="px-3 pt-3">
           <h3 className="line-clamp-2 min-h-[2em] text-xs font-medium leading-tight">
-            {product.name}
+            {nameOverride ?? product.name}
           </h3>
           {product.volumeMl && (
             <p className="mt-0.5 text-xs text-foreground/40">{formatVolume(product.volumeMl)}</p>
