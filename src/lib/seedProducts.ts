@@ -113,6 +113,7 @@ export const seedProducts: SeedProduct[] = [
   { name: "Flash", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 88, caseSize: 9, imageUrl: "/flash-pet-1l.jpg", description: "Классический энергетический напиток с кофеином (~30 мг/100 мл).", calories: 46, protein: 0, fat: 0, carbs: 11 },
   { name: "Flash", category: Category.ENERGY, volumeMl: 500, purchasePrice: 63, caseSize: 20, imageUrl: "/flash-pet-05.jpg", description: "Классический энергетический напиток с кофеином (~30 мг/100 мл).", calories: 46, protein: 0, fat: 0, carbs: 11 },
   { name: "Black Monster Ultra Fantasy", category: Category.ENERGY, volumeMl: 500, purchasePrice: 165, caseSize: 12, imageUrl: "/monster-ultra-black.jpg", description: "Низкокалорийный энергетик с лёгким фруктовым вкусом и кофеином (~32 мг/100 мл).", calories: 10, protein: 0.3, fat: 0, carbs: 2 },
+  { name: "Black Monster", category: Category.ENERGY, volumeMl: 500, purchasePrice: 180, caseSize: 12, markup: 40, imageUrl: "/black-monster-classic.webp", description: "Классический энергетик с таурином и женьшенем, с кофеином (~32 мг/100 мл).", calories: 47, protein: 0, fat: 0, carbs: 11.5 },
   { name: "Tornado Storm", category: Category.ENERGY, volumeMl: 450, purchasePrice: 66, caseSize: 12, imageUrl: "/tornado-storm.jpg", description: "Энергетик с ярким фруктовым вкусом и кофеином (~30 мг/100 мл).", calories: 47, protein: 0, fat: 0, carbs: 11.5 },
   { name: "Tornado Mango", category: Category.ENERGY, volumeMl: 1000, purchasePrice: 89, caseSize: 6, imageUrl: "/tornado-mango-pet.jpg", description: "Энергетик со вкусом манго и кофеином (~30 мг/100 мл).", calories: 47, protein: 0, fat: 0, carbs: 11.5 },
   { name: "Mountain Dew", category: Category.OTHER, volumeMl: 1000, purchasePrice: 95, caseSize: 9, imageUrl: "/mountain-dew-pet-1l.jpg", description: "Газированный цитрусовый напиток с кофеином.", calories: 46, protein: 0, fat: 0, carbs: 11.5 },
@@ -237,6 +238,7 @@ export const seedProducts: SeedProduct[] = [
 
   // Зоотовары
   { name: "Kitekat", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 15000, purchasePrice: 3600, caseSize: 1, markup: 100, imageUrl: "/kitekat-15kg.jpg", description: "Сухой корм для взрослых кошек.", protein: 30, fat: 10, fiber: 3, moisture: 10 },
+  { name: "Kitekat", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 350, purchasePrice: 115, caseSize: 1, markup: 20, imageUrl: "/kitekat-350g-myasnoy-pir.jpg", description: "Сухой корм для взрослых кошек, вкус «Мясной пир».", protein: 30, fat: 10, fiber: 3, moisture: 10 },
   { name: "Корм для кошек \"Мурчик\" с индейкой", category: Category.PET_SUPPLIES, volumeMl: null, weightGrams: 75, purchasePrice: 17.5, caseSize: 35, markup: 10, imageUrl: "/murchik-indeyka.jpg", description: "Влажный корм для кошек с индейкой в соусе.", protein: 8, fat: 5, fiber: 0.5, moisture: 82 },
 
   // Фрукты и овощи
