@@ -85,8 +85,8 @@ export default function ProductRow({
             disabled={isPending}
             onChange={(e) => {
               const next = e.target.checked;
-              startTransition(() => {
-                toggleProductStock(product.id, next);
+              startTransition(async () => {
+                await toggleProductStock(product.id, next);
               });
             }}
             className="h-4 w-4 accent-brand"
@@ -127,8 +127,8 @@ export default function ProductRow({
             const sell = Number(sellPrice);
             if (!Number.isFinite(size) || size < 1) return;
             if (!Number.isFinite(purchase) || !Number.isFinite(sell)) return;
-            startTransition(() => {
-              updateProductPrices(product.id, purchase, sell, imageUrl, size, description);
+            startTransition(async () => {
+              await updateProductPrices(product.id, purchase, sell, imageUrl, size, description);
             });
           }}
           className="mt-3 w-full rounded-xl bg-brand py-2 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98] disabled:opacity-50"

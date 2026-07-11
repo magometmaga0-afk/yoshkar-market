@@ -30,8 +30,8 @@ export default function OrderStatusSelect({
         disabled={isPending}
         onChange={(e) => {
           const next = e.target.value as OrderStatus;
-          startTransition(() => {
-            updateOrderStatus(orderId, next);
+          startTransition(async () => {
+            await updateOrderStatus(orderId, next);
           });
         }}
         className={`appearance-none rounded-full border py-2 pl-3.5 pr-8 text-sm font-semibold shadow-sm outline-none transition disabled:opacity-50 ${STATUS_COLORS[status] ?? ""}`}
