@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { Category } from "@/generated/prisma/client";
 import AdminNav from "@/components/AdminNav";
 import AdminProductList from "@/components/AdminProductList";
 import NewProductForm from "@/components/NewProductForm";
@@ -7,9 +6,7 @@ import NewProductForm from "@/components/NewProductForm";
 export const dynamic = "force-dynamic";
 
 const CATEGORY_LABELS: Record<string, string> = {
-  // Пиво временно скрыто из админки (юридические причины) — товары и код
-  // не удалены, просто закомментированы/отфильтрованы.
-  // BEER: "Пиво",
+  BEER: "Пиво",
   ENERGY: "Энергетик",
   OTHER: "Напиток",
   SNACKS: "Снек",
@@ -22,10 +19,6 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 export default async function AdminProductsPage() {
   const products = await prisma.product.findMany({
-    // Пиво временно скрыто из админки (юридические причины) — товары и код
-    // не удалены, просто закомментированы/отфильтрованы. Чтобы вернуть, убрать
-    // строку "category: { not: Category.BEER }" ниже.
-    where: { category: { not: Category.BEER } },
     orderBy: [{ category: "asc" }, { name: "asc" }],
   });
 

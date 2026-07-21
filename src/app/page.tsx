@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { Category } from "@/generated/prisma/client";
 import Catalog from "@/components/Catalog";
 import type { ProductDTO } from "@/lib/types";
 
@@ -10,10 +9,7 @@ export const revalidate = 15;
 
 export default async function HomePage() {
   const products = await prisma.product.findMany({
-    // Пиво временно скрыто из каталога (юридические причины) — товары и код
-    // не удалены, просто закомментированы/отфильтрованы. Чтобы вернуть, убрать
-    // строку "category: { not: Category.BEER }" ниже.
-    where: { inStock: true, category: { not: Category.BEER } },
+    where: { inStock: true },
     orderBy: [{ category: "asc" }, { name: "asc" }],
   });
 

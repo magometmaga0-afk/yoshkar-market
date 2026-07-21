@@ -9,8 +9,7 @@ type TabKey = "ALL" | "BEER" | "ENERGY" | "OTHER" | "SNACKS" | "COFFEE_TEA" | "C
 
 const TABS: { key: TabKey; label: string; emoji: string }[] = [
   { key: "ALL", label: "Всё", emoji: "🛒" },
-  // Пиво временно скрыто (юридические причины) — не удалено, просто закомментировано.
-  // { key: "BEER", label: "Пиво", emoji: "🍺" },
+  { key: "BEER", label: "Пиво", emoji: "🍺" },
   { key: "ENERGY", label: "Энергетики", emoji: "⚡" },
   { key: "OTHER", label: "Напитки", emoji: "🥤" },
   { key: "SNACKS", label: "Снеки", emoji: "🍫" },

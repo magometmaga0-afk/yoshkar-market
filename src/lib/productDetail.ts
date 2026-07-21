@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { Category } from "@/generated/prisma/client";
 import type { ProductDTO } from "@/lib/types";
 
 type RawProduct = {
@@ -46,8 +45,7 @@ function toDto(p: RawProduct): ProductDTO {
 
 export async function getProductDetail(id: string) {
   const product = await prisma.product.findUnique({ where: { id } });
-  // Пиво временно скрыто (юридические причины) — не удалено, просто закомментировано/отфильтровано.
-  if (!product || !product.inStock || product.category === Category.BEER) return null;
+  if (!product || !product.inStock) return null;
 
   const related = await prisma.product.findMany({
     where: { category: product.category, inStock: true, id: { not: product.id } },

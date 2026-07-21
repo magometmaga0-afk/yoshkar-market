@@ -36,8 +36,7 @@ export default function NewProductForm() {
         <label className="block">
           <span className={labelClass}>Категория</span>
           <select name="category" className={inputClass}>
-            {/* Пиво временно скрыто из админки (юридические причины) — не удалено, просто закомментировано.
-            <option value="BEER">Пиво</option> */}
+            <option value="BEER">Пиво</option>
             <option value="ENERGY">Энергетик</option>
             <option value="OTHER">Напиток</option>
             <option value="SNACKS">Снек</option>
